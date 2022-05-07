@@ -1,0 +1,47 @@
+@mixin telefono {
+    @media (min-width: $telefono) and (max-width: $tablet) {
+        @content;
+    }
+}
+
+@mixin tablet {
+    @media (min-width: $tablet) and (max-width: $desktop){
+        @content;
+    }
+}
+
+@mixin desktop {
+    @media (min-width: $desktop) {
+        @content;
+    }
+}
+
+@mixin btn {
+    border: 2.5px solid $primary;
+    color: $blanco;
+    font-weight: $bold;
+    padding: $separacion / 4 $separacion / 2;
+    margin-top: 3rem;
+    background-color: $primary;
+    border-radius: 1rem;
+    transition: all 100ms ease-in-out;
+    -webkit-transition: all 100ms ease-in-out;
+    -moz-transition: all 100ms ease-in-out;
+    -ms-transition: all 100ms ease-in-out;
+    -o-transition: all 100ms ease-in-out;
+    &:hover{
+        background-color: transparent;
+        cursor: pointer;
+        color: $primary;
+    }
+}
+
+@mixin indexTrabajos($url) {
+    height: 20rem;
+    width: 100%;
+    background-image: url($url);
+    background-position: top center;
+    background-repeat: no-repeat;
+    background-size: cover;
+    border-radius: 1rem;
+}
