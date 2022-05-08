@@ -1,7 +1,13 @@
-import React from 'react'
+import React from 'react';
+import Navbar from '../Navbar';
 
 export default function Feed() {
     return (
-        <h1>Feed</h1>
+        <>
+            <Navbar/>
+            <div>
+
+            </div>
+        </>
     )
 }

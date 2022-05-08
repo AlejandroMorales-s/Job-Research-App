@@ -1,0 +1,34 @@
+.nav-bg{
+    width: 100%;
+    height: 8rem;
+    border-bottom: 2px solid $grisClaro;
+}
+.nav-container{
+    height: 100%;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    .logo{
+        margin: 0;
+    }
+    .profile-img{
+        width: 4.5rem;
+        height: 4.5rem;
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        background-color: $grisClaro;
+        border: 2.5px solid $primary;
+        border-radius: 50%;
+        -webkit-border-radius: 50%;
+        -moz-border-radius: 50%;
+        -ms-border-radius: 50%;
+        -o-border-radius: 50%;
+        overflow: hidden;
+        .profile{
+            color: #a7a7a7;
+            width: 100%;
+            height: 100%;
+        }
+    }
+}
