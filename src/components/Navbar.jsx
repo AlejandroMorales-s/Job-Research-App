@@ -9,8 +9,8 @@ export default function Navbar() {
     return (
         <div className='nav-bg'>
             <div className='nav-container container'>
-                <div className='logo'>
-                    <h1>Logo</h1>
+                <div>
+                    <h1 className='logo'>devJobs<span className='logo-span'>()</span></h1>
                 </div>
                 <div className='profile-img'>
                     { profile }

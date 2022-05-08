@@ -1,6 +1,15 @@
-.logo{
+.logo-form{
     text-align: center;
     margin: $separacion;
+    .logo{
+        margin: 0;
+        font-weight: $regular;
+        font-size: 4rem;
+        .logo-span{
+            color: $primary;
+            font-weight: $medium;
+        }
+    }
 }
 .form-container{
     border: 2px solid #ccc;
