@@ -1,0 +1,17 @@
+.filter-container {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    gap: $separacion / 1.5;
+    margin: $separacion / 1.5 auto;
+    .filter-btn{
+        border: 2.5px solid $primary;
+        background-color: transparent;
+        font-weight: $regular;
+        font-size: 1.6rem;
+        @include secondary-btn;
+        &:hover{
+            cursor: pointer;
+        }
+    }
+}
