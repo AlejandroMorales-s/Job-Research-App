@@ -1,6 +1,6 @@
 .nav-bg{
     width: 100%;
-    height: 8rem;
+    height: 6rem;
     border-bottom: 2px solid $grisClaro;
 }
 .nav-container{
@@ -12,19 +12,20 @@
         margin: 0;
         font-weight: $regular;
         font-size: 2.6rem;
+        color: $negro;
         .logo-span{
             color: $primary;
             font-weight: $medium;
         }
     }
     .profile-img{
-        width: 4rem;
-        height: 4rem;
+        width: 3.5rem;
+        height: 3.5rem;
         display: flex;
         justify-content: center;
         align-items: center;
         background-color: $grisClaro;
-        border: 2.5px solid $primary;
+        border: 2px solid $primary;
         border-radius: 50%;
         -webkit-border-radius: 50%;
         -moz-border-radius: 50%;

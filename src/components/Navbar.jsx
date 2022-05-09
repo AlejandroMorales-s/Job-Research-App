@@ -1,6 +1,7 @@
 import React from 'react'
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
 import { faUser } from '@fortawesome/free-solid-svg-icons'
+import {Link} from 'react-router-dom';
 
 export default function Navbar() {
 
@@ -9,9 +10,9 @@ export default function Navbar() {
     return (
         <div className='nav-bg'>
             <div className='nav-container container'>
-                <div>
+                <Link to="/feed">
                     <h1 className='logo'>devJobs<span className='logo-span'>()</span></h1>
-                </div>
+                </Link>
                 <div className='profile-img'>
                     { profile }
                 </div>
