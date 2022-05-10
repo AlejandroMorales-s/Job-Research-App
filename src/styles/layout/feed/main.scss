@@ -1,0 +1,14 @@
+.grid-main{
+    display: grid;
+    grid-template-columns: 2fr 1fr;
+    gap: $separacion / 2;
+}
+.jobs-container{
+    border: 2px solid $grisClaro;
+    padding: $separacion / 2;
+    border-radius: 1rem;
+    margin-top: $separacion / 2;
+    display: flex;
+    flex-direction: column;
+    gap: $separacion / 2;
+}

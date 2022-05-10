@@ -1,0 +1,58 @@
+.job-card{
+    border: 2px solid $grisClaro;
+    border-radius: 1rem;
+    -webkit-border-radius: 1;
+    -moz-border-radius: 1;
+    -ms-border-radius: 1;
+    -o-border-radius: 1;
+    display: grid;
+    grid-template-columns: 1fr 8fr 1fr;
+    justify-items: center;
+    align-items: center;
+    padding: 1rem 0;
+    @include transition(border);
+    &:hover{
+        border-color: $primary;
+        cursor: pointer;
+        .job-img-container{
+            border-color: $primary;
+        }
+    }
+    .job-img-container{
+        border-radius: 50%;
+        -webkit-border-radius: 50;
+        -moz-border-radius: 50;
+        -ms-border-radius: 50;
+        -o-border-radius: 50;
+        border: 2px solid $grisClaro;
+        overflow: hidden;
+        width: 5.5rem;
+        height: 5.5rem;
+        @include transition(border);
+        .job-img{
+            width: 100%;
+            height: 100%;
+        }
+    }
+    .job-info-container{
+        .job-title{
+            font-size: 1.8rem;
+        }
+        .job-desc{
+            display: -webkit-box;
+            -webkit-line-clamp: 2;
+            -webkit-box-orient: vertical;
+            overflow: hidden;
+            margin: auto;
+            line-height: 1.4; 
+        }
+    }
+    .fav-icon{
+        height: 2.25rem;
+        @include transition(color);
+        &:hover{
+            cursor: pointer;
+            color: $primary;
+        }
+    }
+}

@@ -2,6 +2,7 @@ import React from 'react';
 import Navbar from '../Navbar';
 import Filters from './Filters';
 import DocumentTitle from 'react-document-title';
+import Main from './Main';
 
 export default function Feed() {
     return (
@@ -9,6 +10,7 @@ export default function Feed() {
             <DocumentTitle title="devJobs | Feed"/>
             <Navbar/>
             <Filters/>
+            <Main/>
         </>
     )
 }
