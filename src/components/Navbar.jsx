@@ -13,6 +13,14 @@ export default function Navbar() {
                 <Link to="/feed">
                     <h1 className='logo'>devJobs<span className='logo-span'>()</span></h1>
                 </Link>
+                <nav className="nav">
+                    <Link to="/feed">
+                        <p className='nav-link'>Feed</p>
+                    </Link>
+                    <Link to="/favorites">
+                        <p className='nav-link'>Favorites</p>
+                    </Link>
+                </nav>
                 <div className='profile-img'>
                     { profile }
                 </div>

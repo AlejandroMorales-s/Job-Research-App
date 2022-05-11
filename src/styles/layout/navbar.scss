@@ -18,6 +18,19 @@
             font-weight: $medium;
         }
     }
+    .nav{
+        display: flex;
+        gap: 1.5rem;
+        .nav-link{
+            color: $negro;
+            font-size: 1.6rem;
+            font-weight: $medium;
+            @include transition(color);
+            &:hover{
+                color: $primary;
+            }
+        }
+    }
     .profile-img{
         width: 3.5rem;
         height: 3.5rem;
