@@ -1,0 +1,21 @@
+.fav-container{
+    border: 2px solid $grisClaro;
+    padding: $separacion / 2;
+    border-radius: 1rem;
+    -webkit-border-radius: 1rem;
+    -moz-border-radius: 1rem;
+    -ms-border-radius: 1rem;
+    -o-border-radius: 1rem;
+    margin-top: $separacion / 2;
+    .fav-btn-container{
+        display: flex;
+        justify-content: center;
+        .fav-btn{
+            border: none;
+            background-color: transparent;
+            cursor: pointer;
+            color: $primary;
+            font-weight: $medium;
+        }
+    }
+}

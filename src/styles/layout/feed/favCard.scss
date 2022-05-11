@@ -1,0 +1,35 @@
+.fav-card{
+    border-bottom: 2px solid $grisClaro;
+    margin-bottom: $separacion / 3;
+    &:last-child,
+    &:nth-last-child(2){
+        border-bottom: none;
+        margin-bottom: none;
+    }
+    &:hover{
+        cursor: pointer;
+        .fav-title{
+            color: $primary;
+        }
+        .header-fav .fav-img-container{
+            border-color: $primary;
+        }
+    }
+    .header-fav{
+        display: flex;
+        align-items: center;
+        gap: 1rem;
+        .fav-img-container{
+            @include imgCompanyContainer(5rem, 5rem);
+            @include transition(border);
+        }
+    }
+    .fav-desc{
+        margin: $separacion / 3 auto;
+        display: -webkit-box;
+        -webkit-line-clamp: 2;
+        -webkit-box-orient: vertical;
+        overflow: hidden;
+        line-height: 1.4; 
+    }
+}
