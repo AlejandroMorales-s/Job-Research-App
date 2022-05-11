@@ -2,7 +2,7 @@ import React, {useContext} from 'react'
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
 import { faBookmark } from '@fortawesome/free-regular-svg-icons'
 import companyImgDefault from '../../assets/company.svg'
-import { FavoritesContext } from './Main'
+import { FavoritesContext } from '../../App'
 
 export default function JobCard({job}) {
     

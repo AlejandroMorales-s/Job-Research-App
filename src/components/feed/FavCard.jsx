@@ -1,5 +1,5 @@
 import React, {useContext} from 'react'
-import { FavoritesContext } from './Main'
+import { FavoritesContext } from '../../App'
 import companyImgDefault from '../../assets/company.svg'
 
 

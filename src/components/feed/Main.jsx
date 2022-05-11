@@ -1,4 +1,4 @@
-import React, {useState, createContext} from 'react'
+import React from 'react'
 import Aside from './Aside'
 import JobCard from './JobCard'
 
@@ -46,22 +46,23 @@ const jobs = [
         seniority: 'Senior',
         languages: 'JavaScript, React, Redux, NodeJS',
         experience: '1 year'
+    },
+    {
+        id: 5,
+        title: 'Software Engineer',
+        description: 'Lorem, ipsum dolor sit amet consectetur adipisicing elit. Alias quas, quidem minima corporis aliquam quae fugiat culpa architecto rerum quos ullam qui numquam, nobis cupiditate omnis tenetur. Voluptatum, sequi quod.',
+        company: 'Netflix',
+        companyImg: 'https://brandemia.org/sites/default/files/sites/default/files/icono_netflix_nuevo.jpg',
+        salary: '$100,000',
+        seniority: 'Senior',
+        languages: 'JavaScript, React, Redux, NodeJS',
+        experience: '1 year'
     }
 ]
 
-export const FavoritesContext = createContext()
-
-
 export default function Main() {
-
-    const [favorites, setFavorites] = useState([])
-    
     return (
-        <FavoritesContext.Provider value={{
-            favorites,
-            setFavorites
-            
-        }}>
+        <>
             <div className='grid-main container'>
                 <main>
                     <h2>{`${jobs.length} jobs found`}</h2>
@@ -73,6 +74,6 @@ export default function Main() {
                 </main>
                 <Aside/>
             </div>
-        </FavoritesContext.Provider>
+        </>
     )
 }
