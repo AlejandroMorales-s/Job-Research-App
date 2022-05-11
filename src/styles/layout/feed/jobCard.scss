@@ -22,23 +22,8 @@
         }
     }
     .job-img-container{
-        border-radius: 50%;
-        -webkit-border-radius: 50;
-        -moz-border-radius: 50;
-        -ms-border-radius: 50;
-        -o-border-radius: 50;
-        border: 2px solid $grisClaro;
-        overflow: hidden;
-        width: 6rem;
-        height: 6rem;
+        @include imgCompanyContainer(6rem, 6rem);
         @include transition(border);
-        display: flex;
-        align-items: center;
-        .job-img{
-            width: 100%;
-            height: 100%;
-            object-fit: cover;
-        }
     }
     .job-info-container{
         .job-desc{
