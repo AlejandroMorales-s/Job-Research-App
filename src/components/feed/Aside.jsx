@@ -4,7 +4,7 @@ import {Link} from 'react-router-dom';
 
 export default function Aside() {
     return (
-        <aside>
+        <aside className='aside-container'>
             <h2>Favorites</h2>
             <div className="fav-container">
                 <FavsCard/>

@@ -1,4 +1,6 @@
 .fav-container{
+    max-height: 47.5rem;
+    overflow: auto;
     border: 2px solid $grisClaro;
     padding: $separacion / 2;
     border-radius: 1rem;

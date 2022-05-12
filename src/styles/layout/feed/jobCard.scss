@@ -49,16 +49,36 @@
                 font-size: 1.2rem;
                 width: max-content;
                 background-color: $grisClaro;
-}
+            }
         }
     }
     .fav-icon{
-        height: 2.25rem;
+        height: 2.5rem;
         @include transition(color);
         align-self: flex-end;
         &:hover{
             cursor: pointer;
             color: $primary;
         }
+    }
+}
+
+// Mobile media querie
+@include mobile{
+    .job-card{
+        display: flex;
+        flex-direction: column;
+        padding: 1rem;
+        .job-info-container{
+            .job-title{
+                margin: 1rem auto;
+            }            
+            .job-extrainfo-container{
+                grid-template-columns: 1fr;
+            }
+        } 
+    }
+    .fav-icon{
+        height: 2.5rem;
     }
 }

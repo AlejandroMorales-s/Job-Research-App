@@ -1,6 +1,6 @@
 import React from 'react';
 import Navbar from '../Navbar';
-import Filters from './Filters';
+import Filters from '../filters/Filters';
 import DocumentTitle from 'react-document-title';
 import Main from './Main';
 

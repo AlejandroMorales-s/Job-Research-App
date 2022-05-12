@@ -4,6 +4,7 @@
     justify-content: center;
     flex-direction: column;
     gap: $separacion;
+    padding: 0 $separacion / 2;
     .empty-title{
         color: $grisClaro;
         font-size: 5.5rem;

@@ -2,6 +2,16 @@
     display: grid;
     grid-template-columns: 2fr 1fr;
     gap: $separacion / 2;
+
+    @include tablet{
+        display: flex;
+        flex-direction: column-reverse;
+    }
+
+    @include mobile{
+        display: flex;
+        flex-direction: column-reverse;
+    }
 }
 .jobs-container{
     border: 2px solid $grisClaro;

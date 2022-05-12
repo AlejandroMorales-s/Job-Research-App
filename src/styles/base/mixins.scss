@@ -1,5 +1,5 @@
-@mixin telefono {
-    @media (min-width: $telefono) and (max-width: $tablet) {
+@mixin mobile {
+    @media (min-width: $mobile) and (max-width: $tablet) {
         @content;
     }
 }
@@ -37,7 +37,7 @@
 }
 
 @mixin secondary-btn {
-    border: 2.5px solid $primary;
+    border: 2px solid $primary;
     color: $primary;
     font-weight: $semiBold;
     padding: $separacion / 4 $separacion / 2;
@@ -71,7 +71,8 @@
     -o-border-radius: 50;
     border: 2px solid $grisClaro;
     overflow: hidden;
-    width: $width;
+    min-width: $width;
+    max-width: $width;
     height: $height;
     display: flex;
     align-items: center;

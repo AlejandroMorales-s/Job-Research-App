@@ -5,7 +5,6 @@
     gap: $separacion / 1.5;
     margin: $separacion / 1.5 auto;
     .filter-btn{
-        border: 2.5px solid $primary;
         background-color: transparent;
         font-weight: $regular;
         font-size: 1.6rem;
@@ -13,5 +12,13 @@
         &:hover{
             cursor: pointer;
         }
+    }
+}
+
+@include mobile{
+    .filter-container{
+        display: grid;
+        grid-template-columns: repeat(2, 1fr);
+        gap: $separacion / 2;
     }
 }
