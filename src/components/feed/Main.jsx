@@ -1,4 +1,4 @@
-import React from 'react'
+import React, {useState} from 'react'
 import Aside from './Aside'
 import JobCard from './JobCard'
 

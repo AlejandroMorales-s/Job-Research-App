@@ -1,5 +1,5 @@
 import React, {useContext} from 'react'
-import { FavoritesContext } from '../../App'
+import { GlobalContext } from '../../App'
 import Navbar from '../Navbar'
 import DocumentTitle from 'react-document-title';
 import JobCard from '../feed/JobCard';
@@ -7,7 +7,7 @@ import Empty from './Empty';
 
 export default function Favorites() {
     
-    const {favorites,setFavorites} = useContext(FavoritesContext);
+    const {favorites} = useContext(GlobalContext);
 
     return (
         <>
