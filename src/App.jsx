@@ -6,6 +6,7 @@ import Feed from './components/feed/Feed';
 import Favorites from './components/favorites/Favorites';
 import JobDetails from './components/jobDetails/JobDetails';
 import AppliedJobs from './components/appliedJobs/AppliedJobs';
+import NotFound from './components/NotFound';
 
 const allJobs = [
   {
@@ -157,7 +158,7 @@ function App() {
           <Route path="/job-details/:id" element={<JobDetails/>} />
           <Route path="/favorites" element={<Favorites/>} />
           <Route path="/applied" element={<AppliedJobs/>} />
-          <Route path='*' element={<h1>404 Not Found</h1>}></Route>
+          <Route path='*' element={<NotFound/>}></Route>
         </Routes>
       </Router>
     </GlobalContext.Provider>
