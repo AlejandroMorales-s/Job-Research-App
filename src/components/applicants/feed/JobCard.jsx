@@ -1,8 +1,8 @@
 import React, {useContext} from 'react'
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
 import { faBookmark } from '@fortawesome/free-regular-svg-icons'
-import companyImgDefault from '../../assets/company.svg'
-import { GlobalContext } from '../../App'
+import companyImgDefault from '../../../assets/company.svg'
+import { GlobalContext } from '../../../App'
 import {Link} from 'react-router-dom';
 
 export default function JobCard({job}) {

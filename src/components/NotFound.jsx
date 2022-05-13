@@ -1,5 +1,5 @@
 import React from 'react'
-import Empty from './favorites/Empty'
+import Empty from './applicants/favorites/Empty'
 import Navbar from './Navbar'
 
 export default function NotFound() {

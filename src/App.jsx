@@ -2,10 +2,10 @@ import './App.scss';
 import React, {useState, createContext} from 'react'
 import { BrowserRouter as Router,Routes,Route} from 'react-router-dom'
 import Login from './components/Login/Login'
-import Feed from './components/feed/Feed';
-import Favorites from './components/favorites/Favorites';
-import JobDetails from './components/jobDetails/JobDetails';
-import AppliedJobs from './components/appliedJobs/AppliedJobs';
+import Feed from './components/applicants/feed/Feed';
+import Favorites from './components/applicants/favorites/Favorites';
+import JobDetails from './components/applicants/jobDetails/JobDetails';
+import AppliedJobs from './components/applicants/appliedJobs/AppliedJobs';
 import NotFound from './components/NotFound';
 
 const allJobs = [
@@ -15,7 +15,7 @@ const allJobs = [
       description: 'Lorem, ipsum dolor sit amet consectetur adipisicing elit. Alias quas, quidem minima corporis aliquam quae fugiat culpa architecto rerum quos ullam qui numquam, nobis cupiditate omnis tenetur. Voluptatum, sequi quod.',
       company: 'Google',
       companyImg: 'https://e7.pngegg.com/pngimages/543/934/png-clipart-google-app-logo-google-logo-g-suite-google-text-logo.png',
-      salary: '$100,000',
+      salary: 105000,
       seniority: 'Junior',
       languages: 'JavaScript, React, Redux, NodeJS',
       experience: '1 year',
@@ -26,7 +26,7 @@ const allJobs = [
       description: 'Lorem, ipsum dolor sit amet consectetur adipisicing elit. Alias quas, quidem minima corporis aliquam quae fugiat culpa architecto rerum quos ullam qui numquam, nobis cupiditate omnis tenetur. Voluptatum, sequi quod.',
       company: 'Amazon',
       companyImg: 'https://guiaimpresion.com/wp-content/uploads/2020/06/Logotipo-Amazon.jpg',
-      salary: '$100,000',
+      salary: 104000,
       seniority: 'Trainee',
       languages: 'JavaScript, React, Redux, NodeJS',
       experience: '1 year'
@@ -108,7 +108,7 @@ const allJobs = [
       VS Code &/or Sublime Editor (2 years)`,
       company: 'Meta',
       companyImg: 'https://logos-marcas.com/wp-content/uploads/2021/10/Meta-facebook-Nuevo-Logotipo.jpg',
-      salary: '$100,000',
+      salary: 100000,
       seniority: 'Mid',
       languages: 'JavaScript, React, Redux, NodeJS',
       experience: '1 year'
@@ -141,15 +141,19 @@ export const GlobalContext = createContext()
 
 function App() {
   const [favorites, setFavorites] = useState([])
-  const [jobs] = useState(allJobs)
+  const [jobs, setJobs] = useState(allJobs)
   const [applied, setApplied] = useState([])
+  const [jobsFilter, setJobsFilter] = useState(allJobs)
   return (
     <GlobalContext.Provider value={{
       favorites,
       setFavorites,
       jobs,
+      setJobs,
       applied,
-      setApplied
+      setApplied,
+      jobsFilter,
+      setJobsFilter
   }}>
       <Router>
         <Routes>

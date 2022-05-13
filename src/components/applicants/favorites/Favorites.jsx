@@ -1,6 +1,6 @@
 import React, {useContext} from 'react'
-import { GlobalContext } from '../../App'
-import Navbar from '../Navbar'
+import { GlobalContext } from '../../../App'
+import Navbar from '../../Navbar'
 import DocumentTitle from 'react-document-title';
 import JobCard from '../feed/JobCard';
 import Empty from './Empty';

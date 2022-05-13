@@ -1,6 +1,6 @@
 import React, {useContext} from 'react'
-import { GlobalContext } from '../../App'
-import Navbar from '../Navbar'
+import { GlobalContext } from '../../../App'
+import Navbar from '../../Navbar'
 import {useParams} from 'react-router-dom'
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
 import { faBookmark } from '@fortawesome/free-regular-svg-icons'
