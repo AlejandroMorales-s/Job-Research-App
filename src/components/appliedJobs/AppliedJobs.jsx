@@ -10,7 +10,7 @@ export default function AppliedJobs() {
         <>
             <Navbar/>
             {applied.length === 0 ? (
-                <Empty/>
+                <Empty info={['Not yet applied for any job!', 'All jobs you apply for will be shown here.']}/>
                 ) : (
                     <>
                         <h2 className='favorites-title align-text'>Applied Jobs</h2>

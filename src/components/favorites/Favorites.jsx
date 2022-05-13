@@ -14,7 +14,7 @@ export default function Favorites() {
             <DocumentTitle title="devJobs | Favorites"/>
             <Navbar/>
             {favorites.length === 0 ? (
-                <Empty/>
+                <Empty info={['No favorite jobs yet!', 'You can add a favorite by clicking on the bookmark icon in the job card.']}/>
                 ) : (
                     <>
                         <h2 className='favorites-title align-text'>Favorites</h2>
