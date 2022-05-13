@@ -18,11 +18,11 @@
             font-weight: $medium;
         }
     }
-    .nav{
+    .nav-list{
         display: flex;
-        gap: 1.5rem;
-        .nav-link{
-            color: $negro;
+        gap: 2.5rem;
+        .nav-link,
+        .active-nav-link{
             font-size: 1.6rem;
             font-weight: $medium;
             @include transition(color);

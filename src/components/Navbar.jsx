@@ -1,7 +1,7 @@
 import React from 'react'
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
 import { faUser } from '@fortawesome/free-solid-svg-icons'
-import {Link} from 'react-router-dom';
+import {NavLink} from 'react-router-dom';
 
 export default function Navbar() {
 
@@ -10,16 +10,27 @@ export default function Navbar() {
     return (
         <div className='nav-bg'>
             <div className='nav-container container'>
-                <Link to="/feed">
+                <NavLink to="/feed">
                     <h1 className='logo'>devJobs<span className='logo-span'>()</span></h1>
-                </Link>
+                </NavLink>
                 <nav className="nav">
-                    <Link to="/feed">
-                        <p className='nav-link'>Feed</p>
-                    </Link>
-                    <Link to="/favorites">
-                        <p className='nav-link'>Favorites</p>
-                    </Link>
+                    <ul className="nav-list">
+                        <li className="nav-link">
+                            <NavLink className={({isActive}) => isActive ? 'active-nav-link' : 'nav-link'} to="/feed">
+                                Feed
+                            </NavLink>
+                        </li>
+                        <li className="nav-link">
+                            <NavLink className={({isActive}) => isActive ? 'active-nav-link' : 'nav-link'} to="/favorites">
+                                Favorites
+                            </NavLink>
+                        </li>
+                        <li className="nav-link">
+                            <NavLink className={({isActive}) => isActive ? 'active-nav-link' : 'nav-link'} to="/applied">
+                                Applied Jobs
+                            </NavLink>
+                        </li>
+                    </ul>
                 </nav>
                 <div className='profile-img'>
                     { profile }
