@@ -5,6 +5,7 @@ import Login from './components/Login/Login'
 import Feed from './components/feed/Feed';
 import Favorites from './components/favorites/Favorites';
 import JobDetails from './components/jobDetails/JobDetails';
+import AppliedJobs from './components/appliedJobs/AppliedJobs';
 
 const allJobs = [
   {
@@ -140,12 +141,14 @@ export const GlobalContext = createContext()
 function App() {
   const [favorites, setFavorites] = useState([])
   const [jobs] = useState(allJobs)
-  console.log('', jobs); 
+  const [applied, setApplied] = useState([])
   return (
     <GlobalContext.Provider value={{
       favorites,
       setFavorites,
-      jobs      
+      jobs,
+      applied,
+      setApplied
   }}>
       <Router>
         <Routes>
@@ -153,6 +156,7 @@ function App() {
           <Route path="/feed" element={<Feed/>} />
           <Route path="/job-details/:id" element={<JobDetails/>} />
           <Route path="/favorites" element={<Favorites/>} />
+          <Route path="/applied" element={<AppliedJobs/>} />
           <Route path='*' element={<h1>404 Not Found</h1>}></Route>
         </Routes>
       </Router>

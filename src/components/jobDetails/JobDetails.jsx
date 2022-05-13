@@ -6,23 +6,40 @@ import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
 import { faBookmark } from '@fortawesome/free-regular-svg-icons'
 import DocumentTitle from 'react-document-title';
 
-export default function JobDetails() {
+export default function JobDetails() {    
+    //* Global Context
     const {jobs} = useContext(GlobalContext);
+    const {favorites,setFavorites} = useContext(GlobalContext);
+    const {applied,setApplied} = useContext(GlobalContext);
+
+    //* Get the job id from the url
     const {id} = useParams()
     const job = jobs.find(job => job.id == parseInt(id))
-
-    const {favorites,setFavorites} = useContext(GlobalContext);
     
+    //* Add or remove job from favorites
     const addToFavorites = () =>{
         if (favorites.find(fav => fav.id === job.id)){
             const newFavorites = favorites.filter(fav => fav.id !== job.id);
             setFavorites(newFavorites);
+            alert('Removed from favorites')
         } else {
+            alert('Job added to favorites')
             setFavorites([...favorites,job]);
+        }
+    }
+    
+    //* Add or remove job from applied
+    const addToApplied = () =>{
+        if (applied.find(apply => apply.id === job.id)){
+            alert('You have already applied to this job')
+        } else {
+            alert('You have applied to this job!')
+            setApplied([...applied,job]);
         }
     }
 
     const fav = <FontAwesomeIcon onClick={addToFavorites} className='fav-icon' icon={ faBookmark } />
+    
     return (
         <>
             <DocumentTitle title={`devJobs | ${job.company} - ${job.title}`}/>
@@ -56,7 +73,7 @@ export default function JobDetails() {
                     </div>
                     <div className='details-btns-container'>
                         { fav }
-                        <button className='apply-btn'>Apply</button>
+                        <button onClick={ addToApplied } className='apply-btn'>Apply</button>
                     </div>
                 </div>
                 <div className="details-desc">
@@ -68,7 +85,6 @@ export default function JobDetails() {
                     </div>
                 </div>
                 <div className="details-btn-container">
-
                 </div>
             </div>
         </>
