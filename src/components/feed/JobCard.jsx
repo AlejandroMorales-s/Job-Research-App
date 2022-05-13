@@ -2,11 +2,12 @@ import React, {useContext} from 'react'
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
 import { faBookmark } from '@fortawesome/free-regular-svg-icons'
 import companyImgDefault from '../../assets/company.svg'
-import { FavoritesContext } from '../../App'
+import { GlobalContext } from '../../App'
+import {Link} from 'react-router-dom';
 
 export default function JobCard({job}) {
     
-    const {favorites,setFavorites} = useContext(FavoritesContext);
+    const {favorites,setFavorites} = useContext(GlobalContext);
     
     const addToFavorites = () =>{
         if (favorites.find(fav => fav.id === job.id)){
@@ -38,9 +39,13 @@ export default function JobCard({job}) {
                         <p className="extrainfo">{`Experience: ${job.experience}`}</p>
                     </div>
                 </div>
-                { fav }
+                <div className='job-btns-container'>
+                    { fav }
+                    <Link to={`/job-details/${job.id}`}>
+                        <button className='job-btn'>See offer</button>
+                    </Link>
+                </div>
             </div>
-
         </>
         
     )
