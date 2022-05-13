@@ -13,8 +13,10 @@ export default function JobCard({job}) {
         if (favorites.find(fav => fav.id === job.id)){
             const newFavorites = favorites.filter(fav => fav.id !== job.id);
             setFavorites(newFavorites);
+            alert('Removed from favorites')
         } else {
             setFavorites([...favorites,job]);
+            alert('Job added to favorites')
         }
     }
 
