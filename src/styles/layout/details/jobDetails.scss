@@ -1,0 +1,21 @@
+.details-container{
+    display: grid;
+    grid-template-columns: 1fr 2fr;
+    height: 90vh;
+    .details-desc{
+        border-right: 2px solid $grisClaro;
+        .desc-title-container{
+            border-bottom: 2px solid $grisClaro;
+            text-align: center;
+            padding: $separacion / 2.5 0;
+        }
+        .desc-text-container{
+            height: 84vh;
+            overflow: auto;
+
+            .desc-text{
+                padding: $separacion / 2;
+            }
+        }
+    }
+}

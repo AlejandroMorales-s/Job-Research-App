@@ -1,0 +1,87 @@
+.details-info{
+    border-right: 2px solid $grisClaro;
+    border-left: 2px solid $grisClaro;
+    padding: $separacion / 2;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    height: 100%;
+    .info-img-container{
+        height: 20rem;
+        width: 20rem;
+        border-radius: 50%;
+        -webkit-border-radius: 50;
+        -moz-border-radius: 50;
+        -ms-border-radius: 50;
+        -o-border-radius: 50;
+        overflow: hidden;
+        border: 2px solid $primary;
+    }
+    .info-titles{
+        text-align: center;
+        display: flex;
+        flex-direction: column;
+        gap: 1rem;
+        margin: $separacion / 2 auto;
+        .info-title{
+            font-size: 2.5rem;
+            font-weight: $semiBold;
+        }
+    }
+    .extrainfo-grid{
+        display: grid;
+        grid-template-columns: 1fr 1fr;
+        grid-template-rows: 1fr 1fr 1fr;
+        width: 100%;
+        grid-auto-flow: row;
+        grid-template-areas:
+            "languajes languajes"
+            "salary experience"
+            "seniority seniority";
+        .extrainfo-container{
+            width: 100%;
+            padding: 0.75rem;
+            .extrainfo-title{
+                font-size: 1.5rem;
+                font-weight: $semiBold;
+                color: #828282;
+                opacity: 0.6;
+                margin-bottom: 0.5rem;
+            }
+        }
+        .languajes-container { 
+            grid-area: languajes;
+            border-bottom: 2px solid $grisClaro;
+        }
+        .seniority-container { 
+            border-top: 2px solid $grisClaro;
+            grid-area: seniority; 
+        }
+        
+        .salary-container { 
+            border-right: 2px solid $grisClaro;
+            grid-area: salary; 
+        }
+        
+        .experience-container { 
+            grid-area: experience; 
+        }
+    }
+    .details-btns-container{
+        display: flex;
+        justify-content: space-between;
+        align-items: center;
+        margin-top: auto;
+        width: 100%;
+        .apply-btn{
+            @include btn;
+            margin: 0;
+        }
+        .fav-icon{
+            height: 3rem;
+            &:hover{
+                cursor: pointer;
+            }
+        }
+    }
+}
