@@ -7,6 +7,8 @@ import Favorites from './components/applicants/favorites/Favorites';
 import JobDetails from './components/applicants/jobDetails/JobDetails';
 import AppliedJobs from './components/applicants/appliedJobs/AppliedJobs';
 import NotFound from './components/NotFound';
+import EmployersFeed from './components/employers/employersFeed/EmployersFeed';
+import SignUp from './components/Login/SignUp';
 
 const allJobs = [
   {
@@ -144,6 +146,11 @@ function App() {
   const [jobs, setJobs] = useState(allJobs)
   const [applied, setApplied] = useState([])
   const [jobsFilter, setJobsFilter] = useState(allJobs)
+  const [auth,setAuth] = useState({
+    id:"",
+    name:"",
+    logged:false
+})
   return (
     <GlobalContext.Provider value={{
       favorites,
@@ -153,15 +160,22 @@ function App() {
       applied,
       setApplied,
       jobsFilter,
-      setJobsFilter
+      setJobsFilter,
+      auth,
+      setAuth
   }}>
       <Router>
         <Routes>
           <Route path="/" element={<Login/>} />
+          <Route path="/signup" element={<SignUp/>} />
+          {/*//* Applicants view */}
           <Route path="/feed" element={<Feed/>} />
           <Route path="/job-details/:id" element={<JobDetails/>} />
           <Route path="/favorites" element={<Favorites/>} />
           <Route path="/applied" element={<AppliedJobs/>} />
+          {/*//*Employers view */}
+          <Route path="/employerfeed" element={<EmployersFeed/>} />
+          {/*//* Not Found view */}
           <Route path='*' element={<NotFound/>}></Route>
         </Routes>
       </Router>

@@ -50,11 +50,18 @@
                 font-size: 1.8rem;
             }
         }
+        .form-btn{
+            @include btn;
+        }
         .form-link{
             align-self: flex-end;
-            .form-btn{
-                @include btn;
-            }
         }
     }
+}
+.login-signup{
+    background-color: transparent;
+    border: none;
+    font-size: 1.2rem;
+    color: blue;
+    cursor: pointer;
 }
