@@ -12,26 +12,42 @@ export default function Navbar() {
     return (
         <div className='nav-bg'>
             <div className='nav-container container'>
-                <NavLink to="/feed">
+                <NavLink to={auth.role === "applicant" ? "/feed" : "/employerfeed"}>
                     <h1 className='logo'>devJobs<span className='logo-span'>()</span></h1>
                 </NavLink>
                 <nav className="nav">
                     <ul className="nav-list">
-                        <li className="nav-link">
-                            <NavLink className={({isActive}) => isActive ? 'active-nav-link' : 'nav-link'} to="/feed">
-                                Feed
-                            </NavLink>
-                        </li>
-                        <li className="nav-link">
-                            <NavLink className={({isActive}) => isActive ? 'active-nav-link' : 'nav-link'} to="/favorites">
-                                Favorites
-                            </NavLink>
-                        </li>
-                        <li className="nav-link">
-                            <NavLink className={({isActive}) => isActive ? 'active-nav-link' : 'nav-link'} to="/applied">
-                                Applied Jobs
-                            </NavLink>
-                        </li>
+                        {auth.role === "applicant" ? 
+                        <>
+                            <li className="nav-link">
+                                <NavLink className={({isActive}) => isActive ? 'active-nav-link' : 'nav-link'} to="/feed">
+                                    Feed
+                                </NavLink>
+                            </li>
+                            <li className="nav-link">
+                                <NavLink className={({isActive}) => isActive ? 'active-nav-link' : 'nav-link'} to="/favorites">
+                                    Favorites
+                                </NavLink>
+                            </li>
+                            <li className="nav-link">
+                                <NavLink className={({isActive}) => isActive ? 'active-nav-link' : 'nav-link'} to="/applied">
+                                    Applied Jobs
+                                </NavLink>
+                            </li>
+                        </>
+                        :
+                        <>
+                            <li className="nav-link">
+                                <NavLink className={({isActive}) => isActive ? 'active-nav-link' : 'nav-link'} to="/myoffers">
+                                    My offers
+                                </NavLink>
+                            </li>
+                            <li className="nav-link">
+                                <NavLink className={({isActive}) => isActive ? 'active-nav-link' : 'nav-link'} to="/createoffer">
+                                    Create offer
+                                </NavLink>
+                            </li>
+                        </>} 
                     </ul>
                 </nav>
                 <div className='profile-container'>

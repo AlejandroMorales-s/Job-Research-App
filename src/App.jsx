@@ -11,6 +11,8 @@ import EmployersFeed from './components/employers/employersFeed/EmployersFeed';
 import SignUp from './components/Login/SignUp';
 import { getAllWithToken } from './api';
 import Profile from './components/applicants/profile/Profile';
+import CreateOffer from './components/employers/createOffer/CreateOffer';
+import MyOffers from './components/employers/offers/MyOffers';
 
 export const GlobalContext = createContext()
 
@@ -95,6 +97,8 @@ const [auth,setAuth] = useState({
           <Route path="/profile" element={<Profile/>} />
           {/*//*Employers view */}
           <Route path="/employerfeed" element={<EmployersFeed/>} />
+          <Route path="/createoffer" element={<CreateOffer/>} />
+          <Route path="/myoffers" element={<MyOffers/>} />
           {/*//* Not Found view */}
           <Route path='*' element={<NotFound/>} />
         </Routes>
