@@ -1,7 +1,7 @@
 import React, {useEffect, useState, useContext} from 'react'
 import DocumentTitle from 'react-document-title';
 import { useParams } from 'react-router-dom'
-import { applyToJob, getOneWithToken, putWithToken } from '../../../api'
+import { getOneWithToken, putWithToken } from '../../../api'
 import Navbar from '../../Navbar'
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
 import { faBookmark } from '@fortawesome/free-regular-svg-icons'
@@ -17,14 +17,26 @@ export default function JobDet() {
     const params = useParams()
     const id = params.id
     const [job, setJob] = useState({})
-    
-    useEffect(()=>{
-        getOneWithToken(`/api/jobs/${id}`)
-        .then(({data})=>{
-            setJob(data)
-        })
-    },[])
+    const [isLoading, setIsLoading] = useState(true)
 
+    let isApplied = applied.some(apply=>apply._id === id);
+    
+    //* Fetch job details
+    const fetching = async () => {
+        try {
+            let res = await getOneWithToken(`/api/jobs/${id}`)
+            let json = await res.data;
+            setJob(json);
+            setIsLoading(false)
+        } catch (error) {
+            console.log(error)
+        }
+    }
+    
+    useEffect(() => {
+        fetching()
+    }, [id])
+    
     console.log(job); 
     
     //* Add or remove job from favorites
@@ -59,14 +71,19 @@ export default function JobDet() {
         alert('You unapplied to this job!')
     }
 
+    console.log(job); 
 
     const fav = <FontAwesomeIcon onClick={ addToFavorites } className='fav-icon' icon={ faBookmark } />
 
     return (
         <>
-        <DocumentTitle title={`devJobs | ${job.title}`}/>
-        <Navbar/>
-        <div className='details-container container'>
+        {isLoading ? 
+            <h1 className='loading'></h1> 
+        :
+        <>
+            <DocumentTitle title={`devJobs | ${job.title}`}/>
+            <Navbar/>
+            <div className='details-container container'>
                 <div className="details-info">
                     <div className="info-img-container">
                         <img src={ companyImgDefault }
@@ -88,15 +105,16 @@ export default function JobDet() {
                         </div>
                         <div className='extrainfo-container experience-container'>
                             <p className='extrainfo-title'>Applicants:</p>
-                            <p>{job.salary}</p>
+                            <p>{job.applicants.length}</p>
                         </div>
                         <div className='extrainfo-container seniority-container'>
                             <p className='extrainfo-title'>Location:</p>
+                            <p>{`${job.location.province}, ${job.location.country}`}</p>
                         </div>
                     </div>
                     <div className='details-btns-container'>
                         { fav }
-                        {applied.find(apply => apply._id === job._id)? 
+                        {isApplied ? 
                             <button onClick={unapply}  className='apply-btn'>Unapply</button>
                         :
                             <button onClick={apply}  className='apply-btn'>Apply</button>
@@ -113,7 +131,9 @@ export default function JobDet() {
                 </div>
                 <div className="details-btn-container">
                 </div>
-    </div>
-    </>
+            </div>
+        </>
+        }
+        </>
   )
 }
