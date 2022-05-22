@@ -1,6 +1,6 @@
 .fav-container{
-    max-height: 47.5rem;
-    overflow: auto;
+    max-height: 46rem;
+    overflow: hidden;
     border: 2px solid $grisClaro;
     padding: $separacion / 2;
     border-radius: 1rem;
@@ -9,9 +9,16 @@
     -ms-border-radius: 1rem;
     -o-border-radius: 1rem;
     margin-top: $separacion / 2;
+    position: relative;
     .fav-btn-container{
         display: flex;
         justify-content: center;
+        position: absolute;
+        bottom: 0;
+        left: 0;
+        width: 100%;
+        background-color: $blanco;
+        height: $separacion;
         .fav-btn{
             border: none;
             background-color: transparent;
