@@ -1,25 +1,34 @@
-import React, {useContext} from 'react'
-import { GlobalContext } from '../../../App'
+import React, {useEffect, useState, useContext} from 'react'
+import DocumentTitle from 'react-document-title';
+import { useParams } from 'react-router-dom'
+import { getOneWithToken } from '../../../api'
 import Navbar from '../../Navbar'
-import {useParams} from 'react-router-dom'
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
 import { faBookmark } from '@fortawesome/free-regular-svg-icons'
-import DocumentTitle from 'react-document-title';
+import companyImgDefault from '../../../assets/company.svg'
+import { GlobalContext } from '../../../App';
 
-export default function JobDetails() {    
-    //* Global Context
-    const {jobs} = useContext(GlobalContext);
-    const {favorites,setFavorites} = useContext(GlobalContext);
-    const {applied,setApplied} = useContext(GlobalContext);
 
-    //* Get the job id from the url
-    const {id} = useParams()
-    const job = jobs.find(job => job.id == parseInt(id))
+export default function JobDet() {
+
+    const {favorites, setFavorites} = useContext(GlobalContext);
+
+    const params = useParams()
+    const id = params.id
+    const [job, setJob] = useState({})
+
+    useEffect(()=>{
+        getOneWithToken(`/api/jobs/${id}`)
+        .then(({data})=>{
+            setJob(data)
+        })
+    },[])
+    //console.log(job); 
     
     //* Add or remove job from favorites
     const addToFavorites = () =>{
-        if (favorites.find(fav => fav.id === job.id)){
-            const newFavorites = favorites.filter(fav => fav.id !== job.id);
+        if (favorites.find(fav => fav._id === job._id)){
+            const newFavorites = favorites.filter(fav => fav._id !== job._id);
             setFavorites(newFavorites);
             alert('Removed from favorites')
         } else {
@@ -28,6 +37,7 @@ export default function JobDetails() {
         }
     }
     
+        /*
     //* Add or remove job from applied
     const addToApplied = () =>{
         if (applied.find(apply => apply.id === job.id)){
@@ -39,15 +49,20 @@ export default function JobDetails() {
     }
 
     const fav = <FontAwesomeIcon onClick={addToFavorites} className='fav-icon' icon={ faBookmark } />
-    
+    */
+
+    const fav = <FontAwesomeIcon onClick={ addToFavorites } className='fav-icon' icon={ faBookmark } />
+
     return (
         <>
-            <DocumentTitle title={`devJobs | ${job.company} - ${job.title}`}/>
-            <Navbar/>
-            <div className='details-container container'>
+        <DocumentTitle title={`devJobs | ${job.title}`}/>
+        <Navbar/>
+        <div className='details-container container'>
                 <div className="details-info">
                     <div className="info-img-container">
-                        <img src={ job.companyImg } alt="Logo Company"/>
+                        <img src={ companyImgDefault }
+                        srcSet={ job.companyImg }
+                        alt="Logo Company"/>
                     </div>
                     <div className="info-titles">
                         <h3 className='info-title'>{ job.company }</h3>
@@ -56,7 +71,7 @@ export default function JobDetails() {
                     <div className='extrainfo-grid'>
                         <div className='extrainfo-container languajes-container'>
                             <p className='extrainfo-title'>Languajes:</p>
-                            <p>{ job.languages }</p>
+                            <p>{ job.category }</p>
                         </div>
                         <div className='extrainfo-container salary-container'>
                             <p className='extrainfo-title'>Salary:</p>
@@ -67,13 +82,12 @@ export default function JobDetails() {
                             <p>{ job.experience }</p>
                         </div>
                         <div className='extrainfo-container seniority-container'>
-                            <p className='extrainfo-title'>Seniority:</p>
-                            <p>{ job.seniority }</p>
+                            <p className='extrainfo-title'>Location:</p>
                         </div>
                     </div>
                     <div className='details-btns-container'>
                         { fav }
-                        <button onClick={ addToApplied } className='apply-btn'>Apply</button>
+                        <button  className='apply-btn'>Apply</button>
                     </div>
                 </div>
                 <div className="details-desc">
@@ -86,7 +100,7 @@ export default function JobDetails() {
                 </div>
                 <div className="details-btn-container">
                 </div>
-            </div>
-        </>
-    )
+    </div>
+    </>
+  )
 }

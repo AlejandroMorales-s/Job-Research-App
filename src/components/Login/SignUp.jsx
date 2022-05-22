@@ -18,7 +18,6 @@ export default function SignUp() {
     const signup = (event) =>{
         event.preventDefault()
 
-        console.log(role.current.value)
         setError({...error,loading:true})
         post("/api/auth/signup",{
             name:name.current.value,
@@ -71,7 +70,7 @@ export default function SignUp() {
         .catch(error=>console.log(error))
         }
     }
-    
+
     return (
     <>
         <form onSubmit={signup} action="" className='form'>

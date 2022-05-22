@@ -10,8 +10,8 @@ export default function JobCard({job}) {
     const {favorites,setFavorites} = useContext(GlobalContext);
     
     const addToFavorites = () =>{
-        if (favorites.find(fav => fav.id === job.id)){
-            const newFavorites = favorites.filter(fav => fav.id !== job.id);
+        if (favorites.find(fav => fav._id === job._id)){
+            const newFavorites = favorites.filter(fav => fav._id !== job._id);
             setFavorites(newFavorites);
             alert('Removed from favorites')
         } else {
@@ -35,15 +35,15 @@ export default function JobCard({job}) {
                     <h3 className='job-title'>{`${job.company}   |   ${ job.title }`}</h3>
                     <p className='job-desc'>{ job.description }</p>    
                     <div className="job-extrainfo-container">
-                        <p className="extrainfo">{`Seniority: ${job.seniority}`}</p>
+                        <p className="extrainfo">{`Location: ${job.location.province}, ${job.location.country}`}</p>
                         <p className="extrainfo">{`Salary: ${job.salary}`}</p>
-                        <p className="extrainfo">{`Languaje: ${job.languages}`}</p>
+                        <p className="extrainfo">{`Languaje: ${job.category}`}</p>
                         <p className="extrainfo">{`Experience: ${job.experience}`}</p>
                     </div>
                 </div>
                 <div className='job-btns-container'>
                     { fav }
-                    <Link to={`/job-details/${job.id}`}>
+                    <Link to={`/job-details/${job._id}`}>
                         <button className='job-btn'>See offer</button>
                     </Link>
                 </div>

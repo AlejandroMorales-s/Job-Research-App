@@ -13,7 +13,7 @@ export default function Main() {
                     <h2>{`${jobsFilter.length} jobs found`}</h2>
                     <div className="jobs-container">
                         {jobsFilter.map(job=>(
-                        <JobCard key={job.id} job={job}/>
+                        <JobCard key={job._id} job={job}/>
                         ))}
                     </div>
                 </main>

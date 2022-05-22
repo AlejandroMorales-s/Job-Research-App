@@ -12,12 +12,12 @@ export default function FavsCard() {
         <>
             {favorites.map(job => {
                 return (
-                    <div className='fav-card' key={job.id}>
-                        <Link to={`/job-details/${job.id}`}>
+                    <div className='fav-card' key={job._id}>
+                        <Link to={`/job-details/${job._id}`}>
                             <div className="header-fav">
                                 <div className="fav-img-container">
                                     <img src={ companyImgDefault } alt="" 
-                                    srcset={job.companyImg} />
+                                    srcSet={job.companyImg} />
                                 </div>
                             <h3 className='fav-title'>{`${job.company}   |   ${ job.title }`}</h3>
                             </div>

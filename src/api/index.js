@@ -64,7 +64,41 @@ const deleteWithToken = async (url,data) =>{
         }
     }
 }
+const getAllWithToken = async (url) =>{
+    const token = localStorage.getItem("token")
+    if(token){
+        return await instance.get(url,{
+            headers:{
+                'Authorization':"Bearer "+localStorage.getItem("token")
+            }
+        })
+    }
+
+    return {
+        data:{
+            failed:true,
+            message:"No tienes token"
+        }
+    }
+}
+const getOneWithToken = async (url) =>{
+    const token = localStorage.getItem("token")
+    if(token){
+        return await instance.get(url,{
+            headers:{
+                'Authorization':"Bearer "+localStorage.getItem("token")
+            }
+        })
+    }
+
+    return {
+        data:{
+            failed:true,
+            message:"No tienes token"
+        }
+    }
+}
 
 export default instance
 
-export {post,postWithToken,putWithToken,deleteWithToken}
+export {post,postWithToken,putWithToken,deleteWithToken,getAllWithToken,getOneWithToken}

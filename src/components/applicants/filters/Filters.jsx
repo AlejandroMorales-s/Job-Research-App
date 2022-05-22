@@ -35,7 +35,6 @@ export default function Filters() {
     const clearFilters = () => {
         setJobsFilter(jobs);
     }
-    console.log(jobsFilter); 
 
     return (
         <>

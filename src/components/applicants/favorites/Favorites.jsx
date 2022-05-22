@@ -20,7 +20,7 @@ export default function Favorites() {
                         <h2 className='favorites-title align-text'>Favorites</h2>
                         <div className="jobs-container favorites-container">
                             {favorites.map(job=>(
-                            <JobCard key={job.id} job={job}/>
+                            <JobCard key={job._id} job={job}/>
                             ))}
                         </div>
                     </>

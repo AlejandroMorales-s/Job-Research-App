@@ -25,6 +25,7 @@
         @include transition(border);
     }
     .job-info-container{
+        width: 100%;
         .job-desc{
             display: -webkit-box;
             -webkit-line-clamp: 2;
