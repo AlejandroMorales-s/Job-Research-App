@@ -1,0 +1,14 @@
+.profile-buttons{
+    display: flex;
+    justify-content: space-between;
+    #close-sesion-btn{
+        background-color: transparent;
+        border-color: #e74c3c;
+        color: #e74c3c;
+        &:hover{
+            background-color: #c0392b;
+            border-color: #c0392b;
+            color: $blanco;
+        }
+    }
+}

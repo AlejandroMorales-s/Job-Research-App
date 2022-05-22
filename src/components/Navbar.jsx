@@ -1,7 +1,7 @@
 import React, {useContext} from 'react'
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
 import { faUser } from '@fortawesome/free-solid-svg-icons'
-import {NavLink} from 'react-router-dom';
+import {NavLink, Link} from 'react-router-dom';
 import { GlobalContext } from '../App';
 
 export default function Navbar() {
@@ -36,9 +36,11 @@ export default function Navbar() {
                 </nav>
                 <div className='profile-container'>
                     {auth.logged&&<p>Welcome <span className='bold'>{auth.name}</span>!</p>}
-                    <div className='profile-img'>
-                        { profile }
-                    </div>
+                    <Link to='/profile'>
+                        <div className='profile-img'>
+                            { profile }
+                        </div>
+                    </Link>
                 </div>
             </div>
         </div>

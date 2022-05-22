@@ -24,6 +24,7 @@ export default function Form() {
             setAuth({
                 id:user.id,
                 name:user.name,
+                email:user.email,
                 logged:true
             })
             navigate("/feed",{

@@ -10,6 +10,7 @@ import NotFound from './components/NotFound';
 import EmployersFeed from './components/employers/employersFeed/EmployersFeed';
 import SignUp from './components/Login/SignUp';
 import { getAllWithToken } from './api';
+import Profile from './components/applicants/profile/Profile';
 
 export const GlobalContext = createContext()
 
@@ -34,6 +35,7 @@ function App() {
             setAuth({
                 id:data.user.id,
                 name:data.user.name,
+                email:data.user.email,
                 logged:true
             })
         }
@@ -62,6 +64,7 @@ useEffect(()=>{
   const [auth,setAuth] = useState({
     id:"",
     name:"",
+    email:"",
     logged:false
 })
 
@@ -88,6 +91,7 @@ console.log(auth);
           <Route path="/job-details/:id" element={<JobDet/>} />
           <Route path="/favorites" element={<Favorites/>} />
           <Route path="/applied" element={<AppliedJobs/>} />
+          <Route path="/profile" element={<Profile/>} />
           {/*//*Employers view */}
           <Route path="/employerfeed" element={<EmployersFeed/>} />
           {/*//* Not Found view */}
