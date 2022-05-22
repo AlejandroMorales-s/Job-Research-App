@@ -1,10 +1,9 @@
 import React, {useRef, useContext, useState} from 'react'
 import { GlobalContext } from '../../App'
 import { post } from '../../api'
-import { authContext } from './AuthContext'
 
 export default function SignUp() {
-    const context = useContext(authContext)
+    const {auth, setAuth} = useContext(GlobalContext)
     const [error,setError] = useState({
         isError:false,
         message:"",
@@ -28,7 +27,7 @@ export default function SignUp() {
         .then(({data})=>{
             setError({...error,loading:false})
             localStorage.setItem("token",data.token)
-            context.setAuth({
+            setAuth({
                 id:data.user.id,
                 name:data.user.name,
                 logged:true
@@ -42,33 +41,6 @@ export default function SignUp() {
                 loading:false
             })
         })
-    }
-
-    const recoverSession = ()=>{
-        const token = localStorage.getItem("token")
-
-        if(token){
-            fetch("https://backendnodejstzuzulcode.uw.r.appspot.com/api/auth/validate",{
-            method:"POST",
-            headers:{
-                "Content-Type":"application/json",
-                "Authorization":"Bearer "+ token
-            },
-        })
-        .then(res=>res.json())
-        .then(data=>{
-            if(data.failed){
-                console.log(data)
-            }else{
-                context.setAuth({
-                    id:data.user.id,
-                    name:data.user.name,
-                    logged:true
-                })
-            }
-        })
-        .catch(error=>console.log(error))
-        }
     }
 
     return (

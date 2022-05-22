@@ -4,7 +4,7 @@ import { post } from '../../api';
 import { GlobalContext } from '../../App';
 
 export default function Form() {
-    const context = useContext(GlobalContext)
+    const {auth, setAuth} = useContext(GlobalContext)
 
     const navigate = useNavigate();
 
@@ -21,7 +21,7 @@ export default function Form() {
         .then(data=>{
             const {token,user} = data.data
             localStorage.setItem("token",token); // Guardamos el token que recibimos
-            context.setAuth({
+            setAuth({
                 id:user.id,
                 name:user.name,
                 logged:true

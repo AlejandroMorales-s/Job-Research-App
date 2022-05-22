@@ -14,20 +14,49 @@ import { getAllWithToken } from './api';
 export const GlobalContext = createContext()
 
 function App() {
-  
-  const [jobsFilter, setJobsFilter] = useState([])
-  const [jobs, setJobs] = useState([])
-  
-  useEffect(()=>{
+
+  const recoverSession = ()=>{
+    const token = localStorage.getItem("token")
+
+    if(token){
+        fetch("https://backendnodejstzuzulcode.uw.r.appspot.com/api/auth/validate",{
+        method:"POST",
+        headers:{
+            "Content-Type":"application/json",
+            "Authorization":"Bearer "+ token
+        },
+    })
+    .then(res=>res.json())
+    .then(data=>{
+        if(data.failed){
+            console.log(data)
+        }else{
+            setAuth({
+                id:data.user.id,
+                name:data.user.name,
+                logged:true
+            })
+        }
+    })
+    .catch(error=>console.log(error))
+    }
+}
+
+
+const [jobsFilter, setJobsFilter] = useState([])
+const [jobs, setJobs] = useState([])
+
+useEffect(()=>{
   getAllWithToken("/api/jobs")
   .then(({data})=>{
     setJobs(data)
     setJobsFilter(data)
     //console.log(data); 
   })
+  recoverSession()
   },[])
   
-
+  
   const [favorites, setFavorites] = useState([])
   const [applied, setApplied] = useState([])
   const [auth,setAuth] = useState({
@@ -35,6 +64,8 @@ function App() {
     name:"",
     logged:false
 })
+
+console.log(auth); 
   return (
     <GlobalContext.Provider value={{
       favorites,

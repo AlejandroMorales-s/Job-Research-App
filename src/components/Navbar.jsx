@@ -1,9 +1,11 @@
-import React from 'react'
+import React, {useContext} from 'react'
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
 import { faUser } from '@fortawesome/free-solid-svg-icons'
 import {NavLink} from 'react-router-dom';
+import { GlobalContext } from '../App';
 
 export default function Navbar() {
+    const {auth} = useContext(GlobalContext)
 
     const profile = <FontAwesomeIcon className='profile' icon={ faUser } />
 
@@ -32,8 +34,11 @@ export default function Navbar() {
                         </li>
                     </ul>
                 </nav>
-                <div className='profile-img'>
-                    { profile }
+                <div className='profile-container'>
+                    {auth.logged&&<p>Welcome <span className='bold'>{auth.name}</span>!</p>}
+                    <div className='profile-img'>
+                        { profile }
+                    </div>
                 </div>
             </div>
         </div>
