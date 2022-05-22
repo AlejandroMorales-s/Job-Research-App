@@ -1,7 +1,7 @@
 import React, {useEffect, useState, useContext} from 'react'
 import DocumentTitle from 'react-document-title';
 import { useParams } from 'react-router-dom'
-import { getOneWithToken } from '../../../api'
+import { applyToJob, getOneWithToken, putWithToken } from '../../../api'
 import Navbar from '../../Navbar'
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
 import { faBookmark } from '@fortawesome/free-regular-svg-icons'
@@ -12,6 +12,7 @@ import { GlobalContext } from '../../../App';
 export default function JobDet() {
 
     const {favorites, setFavorites} = useContext(GlobalContext);
+    const {applied, setApplied} = useContext(GlobalContext);
 
     const params = useParams()
     const id = params.id
@@ -37,19 +38,20 @@ export default function JobDet() {
         }
     }
     
-        /*
+        
     //* Add or remove job from applied
-    const addToApplied = () =>{
-        if (applied.find(apply => apply.id === job.id)){
-            alert('You have already applied to this job')
+    const apply = () =>{
+
+        
+        if (applied.find(apply => apply._id === job._id)){
+            alert('You already applied to this job')
         } else {
-            alert('You have applied to this job!')
+            putWithToken(`/api/jobs/apply/${job._id}`)
+
+            alert('You applied to this job!')
             setApplied([...applied,job]);
         }
     }
-
-    const fav = <FontAwesomeIcon onClick={addToFavorites} className='fav-icon' icon={ faBookmark } />
-    */
 
     const fav = <FontAwesomeIcon onClick={ addToFavorites } className='fav-icon' icon={ faBookmark } />
 
@@ -87,7 +89,7 @@ export default function JobDet() {
                     </div>
                     <div className='details-btns-container'>
                         { fav }
-                        <button  className='apply-btn'>Apply</button>
+                        <button onClick={apply}  className='apply-btn'>Apply</button>
                     </div>
                 </div>
                 <div className="details-desc">
