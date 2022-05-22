@@ -8,18 +8,19 @@ import { postWithToken } from '../../../api';
 export default function AppliedJobs() {
     const {applied, setApplied} = useContext(GlobalContext);
 
+    console.log(applied); 
     useEffect(()=>{
     postWithToken('/api/jobs/me')
     .then(({data})=>{
         setApplied(data)
     })
     },[])
-    
+
     return (
         <>
             <Navbar/>
-            {applied.length === 0 ? (
-                <Empty info={['Not yet applied for any job!', 'All jobs you apply for will be shown here.']}/>
+            {applied.error === true ? (
+                <Empty info={[`${applied.message}`, 'All jobs you apply for will be shown here.']}/>
                 ) : (
                     <>
                         <h2 className='favorites-title align-text'>Applied Jobs</h2>
