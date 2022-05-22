@@ -68,7 +68,6 @@ useEffect(()=>{
     logged:false
 })
 
-console.log(auth); 
   return (
     <GlobalContext.Provider value={{
       favorites,

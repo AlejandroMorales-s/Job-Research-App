@@ -8,7 +8,6 @@ import { postWithToken } from '../../../api';
 export default function AppliedJobs() {
     const {applied, setApplied} = useContext(GlobalContext);
 
-    console.log(applied); 
     useEffect(()=>{
     postWithToken('/api/jobs/me')
     .then(({data})=>{
