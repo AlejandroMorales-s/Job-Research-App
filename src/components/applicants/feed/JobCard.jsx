@@ -21,7 +21,7 @@ export default function JobCard({job}) {
     }
 
     
-    const fav = <FontAwesomeIcon onClick={addToFavorites} className='fav-icon' icon={ faBookmark } />
+    const fav = <FontAwesomeIcon onClick={addToFavorites} className={`fav-icon ${favorites.find(fav => fav._id === job._id) ? 'fav-active' : ''}`} icon={ faBookmark } />
 
     return (
         <>
