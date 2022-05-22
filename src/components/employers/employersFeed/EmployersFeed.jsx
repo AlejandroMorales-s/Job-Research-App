@@ -1,7 +1,11 @@
 import React from 'react'
+import Navbar from '../../Navbar';
 
 export default function EmployersFeed() {
   return (
-    <div>EmployersFeed</div>
+    <>
+      <Navbar/>
+      <div>EmployersFeed</div>
+    </>
   )
 }

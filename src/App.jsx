@@ -36,6 +36,7 @@ function App() {
                 id:data.user.id,
                 name:data.user.name,
                 email:data.user.email,
+                role:data.user.role,
                 logged:true
             })
         }
@@ -56,17 +57,18 @@ useEffect(()=>{
     //console.log(data); 
   })
   recoverSession()
-  },[])
-  
-  
-  const [favorites, setFavorites] = useState([])
-  const [applied, setApplied] = useState([])
-  const [auth,setAuth] = useState({
-    id:"",
+},[])
+
+
+const [favorites, setFavorites] = useState([])
+const [applied, setApplied] = useState([])
+const [auth,setAuth] = useState({
+  id:"",
     name:"",
     email:"",
+    role:"",
     logged:false
-})
+  })
 
   return (
     <GlobalContext.Provider value={{
@@ -80,7 +82,7 @@ useEffect(()=>{
       setJobsFilter,
       auth,
       setAuth,
-  }}>
+    }}>
       <Router>
         <Routes>
           <Route path="/" element={<Login/>} />

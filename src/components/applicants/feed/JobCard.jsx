@@ -32,13 +32,13 @@ export default function JobCard({job}) {
                     alt="Img empresa"/>
                 </div>
                 <div className='job-info-container'>
-                    <h3 className='job-title'>{`${job.company}   |   ${ job.title }`}</h3>
+                    <h3 className='job-title'>{`${ job.title }`}</h3>
                     <p className='job-desc'>{ job.description }</p>    
                     <div className="job-extrainfo-container">
                         <p className="extrainfo">{`Location: ${job.location.province}, ${job.location.country}`}</p>
                         <p className="extrainfo">{`Salary: ${job.salary}`}</p>
                         <p className="extrainfo">{`Languaje: ${job.category}`}</p>
-                        <p className="extrainfo">{`Experience: ${job.experience}`}</p>
+                        <p className="extrainfo">{`Applicants: ${job.applicants.length}`}</p>
                     </div>
                 </div>
                 <div className='job-btns-container'>

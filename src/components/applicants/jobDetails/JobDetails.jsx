@@ -13,18 +13,19 @@ export default function JobDet() {
 
     const {favorites, setFavorites} = useContext(GlobalContext);
     const {applied, setApplied} = useContext(GlobalContext);
-
+    
     const params = useParams()
     const id = params.id
     const [job, setJob] = useState({})
-
+    
     useEffect(()=>{
         getOneWithToken(`/api/jobs/${id}`)
         .then(({data})=>{
             setJob(data)
         })
     },[])
-    //console.log(job); 
+
+    console.log(job); 
     
     //* Add or remove job from favorites
     const addToFavorites = () =>{
@@ -86,8 +87,8 @@ export default function JobDet() {
                             <p>{ job.salary }</p>
                         </div>
                         <div className='extrainfo-container experience-container'>
-                            <p className='extrainfo-title'>Experience:</p>
-                            <p>{ job.experience }</p>
+                            <p className='extrainfo-title'>Applicants:</p>
+                            <p>{job.salary}</p>
                         </div>
                         <div className='extrainfo-container seniority-container'>
                             <p className='extrainfo-title'>Location:</p>

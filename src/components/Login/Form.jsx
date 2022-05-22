@@ -25,14 +25,22 @@ export default function Form() {
                 id:user.id,
                 name:user.name,
                 email:user.email,
+                role:user.role,
                 logged:true
             })
-            navigate("/feed",{
-                replace:true
-            })
+            if (data.user.role === "applicant") {
+                navigate("/feed",{
+                    replace:true
+                })
+            } else {
+                navigate("/employerfeed",{
+                    replace:true
+                })
+            }
         })
 
     }
+
     return (
         <>
             <form onSubmit={login} action="" className='form'>

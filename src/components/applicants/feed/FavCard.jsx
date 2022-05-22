@@ -19,7 +19,7 @@ export default function FavsCard() {
                                     <img src={ companyImgDefault } alt="" 
                                     srcSet={job.companyImg} />
                                 </div>
-                            <h3 className='fav-title'>{`${job.company}   |   ${ job.title }`}</h3>
+                            <h3 className='fav-title'>{`${ job.title }`}</h3>
                             </div>
                             <p className='fav-desc'>{ job.description }</p>
                         </Link>
