@@ -39,9 +39,8 @@ export default function JobDet() {
     }
     
         
-    //* Add or remove job from applied
+    //* Add job to applied
     const apply = () =>{
-
         
         if (applied.find(apply => apply._id === job._id)){
             alert('You already applied to this job')
@@ -52,6 +51,13 @@ export default function JobDet() {
             setApplied([...applied,job]);
         }
     }
+
+    //* Remove job to applied
+    const unapply = () =>{
+        putWithToken(`/api/jobs/unapply/${job._id}`)
+        alert('You unapplied to this job!')
+    }
+
 
     const fav = <FontAwesomeIcon onClick={ addToFavorites } className='fav-icon' icon={ faBookmark } />
 
@@ -89,7 +95,11 @@ export default function JobDet() {
                     </div>
                     <div className='details-btns-container'>
                         { fav }
-                        <button onClick={apply}  className='apply-btn'>Apply</button>
+                        {applied.find(apply => apply._id === job._id)? 
+                            <button onClick={unapply}  className='apply-btn'>Unapply</button>
+                        :
+                            <button onClick={apply}  className='apply-btn'>Apply</button>
+                        }
                     </div>
                 </div>
                 <div className="details-desc">
