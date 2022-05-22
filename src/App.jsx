@@ -72,6 +72,11 @@ const [auth,setAuth] = useState({
     logged:false
   })
 
+  if (applied.error === true){
+    setApplied([])
+  }
+
+
   return (
     <GlobalContext.Provider value={{
       favorites,

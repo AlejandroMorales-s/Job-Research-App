@@ -18,8 +18,8 @@ export default function AppliedJobs() {
     return (
         <>
             <Navbar/>
-            {applied.error === true ? (
-                <Empty info={[`${applied.message}`, 'All jobs you apply for will be shown here.']}/>
+            {applied.length === 0 ? (
+                <Empty info={[`No applyed jobs find`, 'All jobs you apply for will be shown here.']}/>
                 ) : (
                     <>
                         <h2 className='favorites-title align-text'>Applied Jobs</h2>
