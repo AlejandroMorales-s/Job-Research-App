@@ -2,6 +2,7 @@ import React, {useRef, useContext} from 'react'
 import { postWithToken } from '../../../api';
 import { GlobalContext } from '../../../App';
 import Navbar from '../../Navbar';
+import DocumentTitle from 'react-document-title';
 
 export default function CreateOffer() {
 
@@ -46,6 +47,7 @@ export default function CreateOffer() {
 
   return (
     <>
+        <DocumentTitle title="devJobs | Create offer"/>
         <Navbar/>
         <h2 className='create-offer-title'>Create Offer</h2>
         <div className="form-container">
