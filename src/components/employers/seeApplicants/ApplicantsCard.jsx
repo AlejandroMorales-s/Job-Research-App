@@ -3,7 +3,6 @@ import { faUser } from '@fortawesome/free-solid-svg-icons';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 
 export default function ApplicantsCard({applicant}) {
-    console.log(applicant); 
 
     const profile = <FontAwesomeIcon className='profile' icon={ faUser } />
     

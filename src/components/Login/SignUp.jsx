@@ -1,13 +1,10 @@
-import React, {useRef, useContext, useState} from 'react'
-import { GlobalContext } from '../../App'
+import React, {useRef, useState} from 'react'
 import { post } from '../../api'
 
 export default function SignUp() {
-    const {auth, setAuth} = useContext(GlobalContext)
     const [error,setError] = useState({
         isError:false,
         message:"",
-        loading:false
     })
     const email = useRef()
     const password = useRef()
@@ -16,8 +13,7 @@ export default function SignUp() {
 
     const signup = (event) =>{
         event.preventDefault()
-
-        setError({...error,loading:true})
+        
         post("/api/auth/signup",{
             name:name.current.value,
             email: email.current.value,
@@ -25,23 +21,19 @@ export default function SignUp() {
             role:role.current.value
         })
         .then(({data})=>{
-            setError({...error,loading:false})
-            localStorage.setItem("token",data.token)
-            setAuth({
-                id:data.user.id,
-                name:data.user.name,
-                logged:true
-        })
+            alert("User created successfully")
         })
         .catch(error=>{
             console.log(error.response.data)
             setError({
                 isError:true,
                 message:error.response.data.message,
-                loading:false
             })
+            alert(error.response.data.message)
         })
     }
+
+
 
     return (
     <>

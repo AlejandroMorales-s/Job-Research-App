@@ -19,11 +19,12 @@ export default function MyOffers() {
     .catch(error => console.log(error))
   },[])
 
+
   return (
     <>
       <DocumentTitle title='devJobs | My Offers'/>
       <Navbar/>
-      {loading ? 
+      {loading || offers.error === true ? 
         <Empty info={['No offers yet', 'Create your first offer and start receiving applications!']}/>
       :
       <>
