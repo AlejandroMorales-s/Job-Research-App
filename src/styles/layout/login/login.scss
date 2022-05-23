@@ -24,11 +24,15 @@
         align-items: center;
         width: 100%;
         .campos-container{
-            max-width: 100%;
+            width: 100%;
+            max-width: 60rem;
             display: flex;
             flex-direction: column;
             gap: 1rem;
             margin-top: 3rem;
+            #description{
+                height: 20rem;
+            }
             .form-input{
                 border: 2.5px solid $primary;
                 border-radius: 10px;
@@ -36,11 +40,11 @@
                 -moz-border-radius: 10px;
                 -ms-border-radius: 10px;
                 -o-border-radius: 10px;
-                width: 60rem;
+                max-width: 60rem;
                 height: 5rem;
                 font-size: 1.8rem;
                 margin: auto;
-                max-width: 100%;
+                width: 100%;
                 padding: 0 1rem;
                 &:focus{
                     outline: none;
@@ -65,4 +69,15 @@
     color: blue;
     cursor: pointer;
     margin-top: $separacion / 2;
+}
+.create-offer-title{
+    margin: $separacion;
+    text-align: center;
+}
+.form-flex{
+    width: 100%;
+    max-width: 60rem;
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    column-gap: $separacion / 2;
 }

@@ -43,7 +43,7 @@ export default function Login() {
                             replace:true
                         })
                     } else {
-                        navigate("/employerfeed",{
+                        navigate("/myoffers",{
                             replace:true
                         })
                     }

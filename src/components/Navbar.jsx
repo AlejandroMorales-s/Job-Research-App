@@ -12,7 +12,7 @@ export default function Navbar() {
     return (
         <div className='nav-bg'>
             <div className='nav-container container'>
-                <NavLink to={auth.role === "applicant" ? "/feed" : "/employerfeed"}>
+                <NavLink to={auth.role === "applicant" ? "/feed" : "/myoffers"}>
                     <h1 className='logo'>devJobs<span className='logo-span'>()</span></h1>
                 </NavLink>
                 <nav className="nav">
