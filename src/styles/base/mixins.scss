@@ -43,11 +43,11 @@
     font-weight: $semiBold;
     padding: $separacion / 4 $separacion / 2;
     background-color: transparent;
-    border-radius: 6rem;
-    -webkit-border-radius: 6rem;
-    -moz-border-radius: 6rem;
-    -ms-border-radius: 6rem;
-    -o-border-radius: 6rem;
+    border-radius: 0.5rem;
+    -webkit-border-radius: 0.5rem;
+    -moz-border-radius: 0.5rem;
+    -ms-border-radius: 0.5rem;
+    -o-border-radius: 0.5rem;
     @include transition(all);
     &:hover{
         background-color: $primary;
