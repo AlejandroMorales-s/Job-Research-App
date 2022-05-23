@@ -8,6 +8,7 @@ export default function Profile() {
     <>
         <DocumentTitle title='devJobs | Profile'/>
         <Navbar/>
+        <h2 className='create-offer-title'>Profile</h2>
         <div className="form-container">
             <UserData/>
         </div>

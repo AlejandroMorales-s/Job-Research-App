@@ -21,8 +21,10 @@ export default function JobCard({job}) {
         }
     }
 
+    const salary = job.salary.toLocaleString('en-US', {style: 'currency', currency: 'USD'});
+    const category = job.category.join(', ');
     
-    const fav = <FontAwesomeIcon onClick={addToFavorites} className={`fav-icon ${favorites.find(fav => fav._id === job._id) ? 'fav-active' : ''}`} icon={ faBookmark } />
+    const fav = <FontAwesomeIcon key={job._id} onClick={addToFavorites} className={`fav-icon ${favorites.find(fav => fav._id === job._id) ? 'fav-active' : ''}`} icon={ faBookmark } />
 
     return (
         <>
@@ -37,8 +39,8 @@ export default function JobCard({job}) {
                     <p className='job-desc'>{ job.description }</p>    
                     <div className="job-extrainfo-container">
                         <p className="extrainfo">{`Location: ${job.location.province}, ${job.location.country}`}</p>
-                        <p className="extrainfo">{`Salary: ${job.salary}`}</p>
-                        <p className="extrainfo">{`Languaje: ${job.category}`}</p>
+                        <p className="extrainfo">{`Salary: ${salary}`}</p>
+                        <p className="extrainfo">{`Languaje: ${category}`}</p>
                         <p className="extrainfo">{`Applicants: ${job.applicants.length}`}</p>
                     </div>
                 </div>
