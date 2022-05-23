@@ -36,9 +36,7 @@ export default function JobDet() {
     useEffect(() => {
         fetching()
     }, [id])
-    
-    console.log(job); 
-    
+        
     //* Add or remove job from favorites
     const addToFavorites = () =>{
         if (favorites.find(fav => fav._id === job._id)){
@@ -70,8 +68,6 @@ export default function JobDet() {
         putWithToken(`/api/jobs/unapply/${job._id}`)
         alert('You unapplied to this job!')
     }
-
-    console.log(job); 
 
     const fav = <FontAwesomeIcon onClick={ addToFavorites } className='fav-icon' icon={ faBookmark } />
 
