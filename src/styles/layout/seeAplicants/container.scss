@@ -7,3 +7,9 @@
     grid-template-columns: repeat(3, 1fr);
     gap: $separacion / 2;
 }
+
+@include mobile{
+    .applicants-container{
+        grid-template-columns: 1fr;
+    }
+}
