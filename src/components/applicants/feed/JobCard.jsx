@@ -8,6 +8,7 @@ import {Link} from 'react-router-dom';
 export default function JobCard({job}) {
     
     const {favorites,setFavorites} = useContext(GlobalContext);
+    const {auth} = useContext(GlobalContext);
     
     const addToFavorites = () =>{
         if (favorites.find(fav => fav._id === job._id)){
@@ -42,7 +43,11 @@ export default function JobCard({job}) {
                     </div>
                 </div>
                 <div className='job-btns-container'>
-                    { fav }
+                    {auth.role === 'applicant' ? 
+                        [ fav ]
+                    :
+                    <></>
+                    }
                     <Link to={`/job-details/${job._id}`}>
                         <button className='job-btn'>See offer</button>
                     </Link>
