@@ -7,7 +7,6 @@ import Favorites from './components/applicants/favorites/Favorites';
 import JobDet from './components/applicants/jobDetails/JobDetails';
 import AppliedJobs from './components/applicants/appliedJobs/AppliedJobs';
 import NotFound from './components/NotFound';
-import EmployersFeed from './components/employers/employersFeed/EmployersFeed';
 import SignUp from './components/Login/SignUp';
 import { getAllWithToken } from './api';
 import Profile from './components/applicants/profile/Profile';
@@ -101,7 +100,6 @@ const [auth,setAuth] = useState({
           <Route path="/applied" element={<AppliedJobs/>} />
           <Route path="/profile" element={<Profile/>} />
           {/*//*Employers view */}
-          <Route path="/employerfeed" element={<EmployersFeed/>} />
           <Route path="/createoffer" element={<CreateOffer/>} />
           <Route path="/myoffers" element={<MyOffers/>} />
           {/*//* Not Found view */}
