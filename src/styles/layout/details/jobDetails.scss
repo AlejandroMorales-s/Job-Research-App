@@ -19,3 +19,28 @@
         }
     }
 }
+
+@include mobile{
+    .details-container{
+        margin-top: $separacion / 2;
+        grid-template-columns: 1fr;
+        .details-info{
+            border: 2px solid $grisClaro;
+            border-radius: 0.5rem;
+            .extrainfo-grid{
+                margin-bottom: $separacion / 2;
+            }
+        }
+        .details-desc{
+            margin-top: $separacion / 2;
+            border: 2px solid $grisClaro;
+            border-radius: 0.5rem;
+            .desc-title-container{
+                border-bottom: none;
+            }
+            .desc-text-container{
+                overflow: auto;
+            }
+        }
+    }
+}
