@@ -36,7 +36,7 @@ export default function CreateOffer() {
     "salary": salary.current.value
     })
     .then(({data})=>{
-        console.log(data); 
+        alert("Offer created successfully");
     })
     .catch(error=>{
         console.log(error.response.data)
