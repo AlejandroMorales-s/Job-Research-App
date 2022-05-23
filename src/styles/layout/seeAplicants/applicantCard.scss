@@ -1,0 +1,38 @@
+.applicant-card{
+    display: flex;
+    gap: $separacion / 4;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    width: 100%;
+    height: 100%;
+    padding: 1rem;
+    border: 2px solid $grisClaro;
+    border-radius: 0.5rem;
+    background-color: #fff;
+    box-shadow: 0 0.5rem 1rem rgba(0, 0, 0, 0.1);
+    transition: all 0.15s ease-in-out;
+    -webkit-transition: all 0.15s ease-in-out;
+    -moz-transition: all 0.15s ease-in-out;
+    -ms-transition: all 0.15s ease-in-out;
+    -o-transition: all 0.15s ease-in-out;
+    &:hover{
+        box-shadow: 0 0.5rem 1rem rgba(0, 0, 0, 0.2);
+        border: 2px solid $primary;
+    }
+    div{
+        width: 100%;
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+        justify-content: center;
+    }
+    .profile-img{
+        height: 7.5rem;
+        width: 7.5rem;
+    }
+    .see-aplicant-btn{
+        @include btn;
+        margin: 0;
+    }
+}

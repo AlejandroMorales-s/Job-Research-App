@@ -1,0 +1,9 @@
+.applicants-container{
+    border: 2px solid $grisClaro;
+    padding: $separacion / 2;
+    border-radius: 1rem;
+    margin-top: $separacion / 2;
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    gap: $separacion / 2;
+}

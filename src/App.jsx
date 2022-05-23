@@ -12,6 +12,7 @@ import { getAllWithToken } from './api';
 import Profile from './components/applicants/profile/Profile';
 import CreateOffer from './components/employers/createOffer/CreateOffer';
 import MyOffers from './components/employers/offers/MyOffers';
+import SeeAplicants from './components/employers/seeApplicants/SeeAplicants';
 
 export const GlobalContext = createContext()
 
@@ -102,6 +103,7 @@ const [auth,setAuth] = useState({
           {/*//*Employers view */}
           <Route path="/createoffer" element={<CreateOffer/>} />
           <Route path="/myoffers" element={<MyOffers/>} />
+          <Route path="/applicants/:id" element={<SeeAplicants/>} />
           {/*//* Not Found view */}
           <Route path='*' element={<NotFound/>} />
         </Routes>

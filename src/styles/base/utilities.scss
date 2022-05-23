@@ -21,3 +21,23 @@
 .fav-active{
     color: $primary;
 }
+.profile-img{
+    width: 3.5rem;
+    height: 3.5rem;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    background-color: $grisClaro;
+    border: 2px solid $primary;
+    border-radius: 50%;
+    -webkit-border-radius: 50%;
+    -moz-border-radius: 50%;
+    -ms-border-radius: 50%;
+    -o-border-radius: 50%;
+    overflow: hidden;
+    .profile{
+        color: #a7a7a7;
+        width: 100%;
+        height: 100%;
+    }
+}

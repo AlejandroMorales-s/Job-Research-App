@@ -7,12 +7,14 @@ import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
 import { faBookmark } from '@fortawesome/free-regular-svg-icons'
 import companyImgDefault from '../../../assets/company.svg'
 import { GlobalContext } from '../../../App';
+import {Link} from 'react-router-dom';
 
 
 export default function JobDet() {
 
     const {favorites, setFavorites} = useContext(GlobalContext);
     const {applied, setApplied} = useContext(GlobalContext);
+    const {auth} = useContext(GlobalContext);
     
     const params = useParams()
     const id = params.id
@@ -69,7 +71,7 @@ export default function JobDet() {
         alert('You unapplied to this job!')
     }
 
-    const fav = <FontAwesomeIcon onClick={ addToFavorites } className='fav-icon' icon={ faBookmark } />
+    const fav = <FontAwesomeIcon onClick={ addToFavorites } className={`fav-icon ${favorites.find(fav => fav._id === job._id) ? 'fav-active' : ''}`} icon={ faBookmark } />
 
     return (
         <>
@@ -109,11 +111,19 @@ export default function JobDet() {
                         </div>
                     </div>
                     <div className='details-btns-container'>
-                        { fav }
-                        {isApplied ? 
-                            <button onClick={unapply}  className='apply-btn'>Unapply</button>
-                        :
-                            <button onClick={apply}  className='apply-btn'>Apply</button>
+                        {auth.role === 'applicant' ? 
+                            <>
+                                { fav }
+                                {isApplied ? 
+                                    <button onClick={unapply}  className='apply-btn'>Unapply</button>
+                                :
+                                    <button onClick={apply}  className='apply-btn'>Apply</button>
+                                }
+                            </>
+                        : 
+                            <Link to={`/applicants/${job._id}`}>
+                                <button className='apply-btn'>See applicants</button>
+                            </Link>
                         }
                     </div>
                 </div>

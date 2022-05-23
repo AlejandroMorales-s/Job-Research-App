@@ -46,7 +46,9 @@ export default function JobCard({job}) {
                     {auth.role === 'applicant' ? 
                         [ fav ]
                     :
-                    <></>
+                        <Link to={`/applicants/${job._id}`}>
+                            <button className='job-btn'>See applicants</button>
+                        </Link>
                     }
                     <Link to={`/job-details/${job._id}`}>
                         <button className='job-btn'>See offer</button>
