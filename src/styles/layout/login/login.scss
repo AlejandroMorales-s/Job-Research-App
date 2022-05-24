@@ -53,6 +53,28 @@
             .form-label{
                 font-size: 1.8rem;
             }
+            div .password-check{
+                background-color: $primary;
+                padding: 1rem;
+                border-radius: 1rem;
+                -webkit-border-radius: 1rem;
+                -moz-border-radius: 1rem;
+                -ms-border-radius: 1rem;
+                -o-border-radius: 1rem;
+                color: $blanco;
+                font-weight: $semiBold;
+            }
+            div .password-fail{
+                background-color: #c0392b;
+                padding: 1rem;
+                border-radius: 1rem;
+                -webkit-border-radius: 1rem;
+                -moz-border-radius: 1rem;
+                -ms-border-radius: 1rem;
+                -o-border-radius: 1rem;
+                color: $blanco;
+                font-weight: $semiBold;
+            }
         }
         .form-btn{
             @include btn;
