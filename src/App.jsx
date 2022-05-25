@@ -56,7 +56,6 @@ useEffect(()=>{
   .then(({data})=>{
     setJobs(data)
     setJobsFilter(data)
-    //console.log(data); 
   })
   recoverSession()
 },[])
