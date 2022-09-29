@@ -1,10 +1,10 @@
 import React, {useState, useContext} from 'react'
-import { GlobalContext } from '../../../App';
+import { globalContext } from '../../../context/GlobalContext';
 import Aside from './Aside'
 import JobCard from './JobCard'
 
 export default function Main() {
-    const {jobsFilter, setJobsFilter} = useContext(GlobalContext);
+    const {jobsFilter, setJobsFilter} = useContext(globalContext);
 
     return (
         <>

@@ -1,10 +1,10 @@
 import React, {useContext} from 'react'
 import { useNavigate } from 'react-router-dom';
 import { putWithToken } from '../../../api';
-import { GlobalContext } from '../../../App';
+import { globalContext } from '../../../context/GlobalContext';
 
 export default function UserData() {
-    const {auth, setAuth} = useContext(GlobalContext);
+    const {auth, setAuth} = useContext(globalContext);
     const navigate = useNavigate();
 
     const updateUser = (e) => {

@@ -1,5 +1,4 @@
 import './App.scss';
-import React, {useState, createContext, useEffect} from 'react'
 import { BrowserRouter as Router,Routes,Route} from 'react-router-dom'
 import Login from './components/Login/Login'
 import Feed from './components/applicants/feed/Feed';
@@ -8,87 +7,14 @@ import JobDet from './components/applicants/jobDetails/JobDetails';
 import AppliedJobs from './components/applicants/appliedJobs/AppliedJobs';
 import NotFound from './components/NotFound';
 import SignUp from './components/Login/SignUp';
-import { getAllWithToken } from './api';
 import Profile from './components/applicants/profile/Profile';
 import CreateOffer from './components/employers/createOffer/CreateOffer';
 import MyOffers from './components/employers/offers/MyOffers';
 import SeeAplicants from './components/employers/seeApplicants/SeeAplicants';
 
-export const GlobalContext = createContext()
 
 function App() {
-
-  const recoverSession = ()=>{
-    const token = localStorage.getItem("token")
-
-    if(token){
-        fetch("https://backendnodejstzuzulcode.uw.r.appspot.com/api/auth/validate",{
-        method:"POST",
-        headers:{
-            "Content-Type":"application/json",
-            "Authorization":"Bearer "+ token
-        },
-    })
-    .then(res=>res.json())
-    .then(data=>{
-        if(data.failed){
-            console.log(data)
-        }else{
-            setUser({
-                id:data.user.id,
-                name:data.user.name,
-                email:data.user.email,
-                role:data.user.role,
-                logged:true
-            })
-        }
-    })
-    .catch(error=>console.log(error))
-    }
-}
-
-
-const [jobsFilter, setJobsFilter] = useState([])
-const [jobs, setJobs] = useState([])
-
-useEffect(()=>{
-  getAllWithToken("/api/jobs")
-  .then(({data})=>{
-    setJobs(data)
-    setJobsFilter(data)
-  })
-  recoverSession()
-},[])
-
-
-const [favorites, setFavorites] = useState([])
-const [applied, setApplied] = useState([])
-const [user,setUser] = useState({
-    id:"",
-    name:"",
-    email:"",
-    role:"",
-    logged:false
-  })
-
-  if (applied.error === true){
-    setApplied([])
-  }
-
-
   return (
-    <GlobalContext.Provider value={{
-      favorites,
-      setFavorites,
-      jobs,
-      setJobs,
-      applied,
-      setApplied,
-      jobsFilter,
-      setJobsFilter,
-      user,
-      setUser,
-    }}>
       <Router>
         <Routes>
           <Route path="/" element={<Login/>} />
@@ -107,7 +33,6 @@ const [user,setUser] = useState({
           <Route path='*' element={<NotFound/>} />
         </Routes>
       </Router>
-    </GlobalContext.Provider>
   );
 }
 

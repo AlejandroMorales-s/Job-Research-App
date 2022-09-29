@@ -6,23 +6,23 @@ import Navbar from '../../Navbar'
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
 import { faBookmark } from '@fortawesome/free-regular-svg-icons'
 import companyImgDefault from '../../../assets/company.svg'
-import { GlobalContext } from '../../../App';
 import {Link} from 'react-router-dom';
+import { globalContext } from '../../../context/GlobalContext';
 
 
 export default function JobDet() {
 
-    const {favorites, setFavorites} = useContext(GlobalContext);
-    const {applied, setApplied} = useContext(GlobalContext);
-    const {auth} = useContext(GlobalContext);
-    
+    const {favorites, setFavorites} = useContext(globalContext);
+    const {applied, setApplied} = useContext(globalContext);
+    const {auth} = useContext(globalContext);
+
     const params = useParams()
     const id = params.id
     const [job, setJob] = useState({})
     const [isLoading, setIsLoading] = useState(true)
 
     let isApplied = applied.some(apply=>apply._id === id);
-    
+
     //* Fetch job details
     const fetching = async () => {
         try {
@@ -34,11 +34,11 @@ export default function JobDet() {
             console.log(error)
         }
     }
-    
+
     useEffect(() => {
         fetching()
     }, [id])
-        
+
     //* Add or remove job from favorites
     const addToFavorites = () =>{
         if (favorites.find(fav => fav._id === job._id)){
@@ -50,11 +50,11 @@ export default function JobDet() {
             setFavorites([...favorites,job]);
         }
     }
-    
-        
+
+
     //* Add job to applied
     const apply = () =>{
-        
+
         if (applied.find(apply => apply._id === job._id)){
             alert('You already applied to this job')
         } else {
@@ -74,8 +74,8 @@ export default function JobDet() {
     const fav = <FontAwesomeIcon onClick={ addToFavorites } className={`fav-icon ${favorites.find(fav => fav._id === job._id) ? 'fav-active' : ''}`} icon={ faBookmark } />
     return (
         <>
-        {isLoading ? 
-            <h1 className='loading'></h1> 
+        {isLoading ?
+            <h1 className='loading'></h1>
         :
         <>
             <DocumentTitle title={`devJobs | ${job.title}`}/>
@@ -110,16 +110,16 @@ export default function JobDet() {
                         </div>
                     </div>
                     <div className='details-btns-container'>
-                        {auth.role === 'applicant' ? 
+                        {auth.role === 'applicant' ?
                             <>
                                 { fav }
-                                {isApplied ? 
+                                {isApplied ?
                                     <button onClick={unapply}  className='apply-btn'>Unapply</button>
                                 :
                                     <button onClick={apply}  className='apply-btn'>Apply</button>
                                 }
                             </>
-                        : 
+                        :
                             <Link to={`/applicants/${job._id}`}>
                                 <button className='apply-btn'>See applicants</button>
                             </Link>
@@ -128,7 +128,7 @@ export default function JobDet() {
                 </div>
                 <div className="details-desc">
                     <div className="desc-title-container">
-                        <h3 className='desc-title'>Job Details</h3>    
+                        <h3 className='desc-title'>Job Details</h3>
                     </div>
                     <div className="desc-text-container">
                         <p className='desc-text'>{ job.description }</p>

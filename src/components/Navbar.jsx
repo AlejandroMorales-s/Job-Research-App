@@ -2,22 +2,22 @@ import React, {useContext} from 'react'
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
 import { faUser } from '@fortawesome/free-solid-svg-icons'
 import {NavLink, Link} from 'react-router-dom';
-import { GlobalContext } from '../App';
+import { globalContext } from '../context/GlobalContext';
 
 export default function Navbar() {
-    const {auth} = useContext(GlobalContext)
+    const {user} = useContext(globalContext)
 
     const profile = <FontAwesomeIcon className='profile' icon={ faUser } />
 
     return (
         <div className='nav-bg'>
             <div className='nav-container container'>
-                <NavLink to={auth.role === "applicant" ? "/feed" : "/myoffers"}>
+                <NavLink to={user.role === "applicant" ? "/feed" : "/myoffers"}>
                     <h1 className='logo'>devJobs<span className='logo-span'>()</span></h1>
                 </NavLink>
                 <nav className="nav">
                     <ul className="nav-list">
-                        {auth.role === "applicant" ? 
+                        {user.role === "applicant" ? 
                         <>
                             <li className="nav-link">
                                 <NavLink className={({isActive}) => isActive ? 'active-nav-link' : 'nav-link'} to="/feed">
@@ -51,7 +51,7 @@ export default function Navbar() {
                     </ul>
                 </nav>
                 <div className='profile-container'>
-                    {auth.logged&&<p>Welcome <span className='bold'>{auth.name}</span>!</p>}
+                    {user.logged&&<p>Welcome <span className='bold'>{user.name}</span>!</p>}
                     <Link to='/profile'>
                         <div className='profile-img'>
                             { profile }

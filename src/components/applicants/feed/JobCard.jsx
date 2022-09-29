@@ -2,13 +2,13 @@ import React, {useContext} from 'react'
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
 import { faBookmark } from '@fortawesome/free-regular-svg-icons'
 import companyImgDefault from '../../../assets/company.svg'
-import { GlobalContext } from '../../../App'
 import {Link} from 'react-router-dom';
+import { globalContext } from '../../../context/GlobalContext'
 
 export default function JobCard({job}) {
     
-    const {favorites,setFavorites} = useContext(GlobalContext);
-    const {auth} = useContext(GlobalContext);
+    const {favorites,setFavorites} = useContext(globalContext);
+    const {auth} = useContext(globalContext);
     
     const addToFavorites = () =>{
         if (favorites.find(fav => fav._id === job._id)){

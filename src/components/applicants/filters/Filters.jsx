@@ -1,12 +1,12 @@
 import React, {useContext} from 'react'
-import { GlobalContext } from '../../../App'
 import Salary from './Salary'
 import Category from './Category'
+import { globalContext } from '../../../context/GlobalContext';
 
 export default function Filters() {
 
-    const {setJobsFilter} = useContext(GlobalContext);
-    const {jobs} = useContext(GlobalContext);
+    const {setJobsFilter} = useContext(globalContext);
+    const {jobs} = useContext(globalContext);
 
     const clearFilters = () => {
         setJobsFilter(jobs);

@@ -1,7 +1,7 @@
 import React, {useContext} from 'react'
-import { GlobalContext } from '../../../App'
 import Select from 'react-select';
 import { postWithToken } from '../../../api';
+import { globalContext } from '../../../context/GlobalContext';
 
 const options = [
     { value: 'javascript', name: 'JavaScript' },
@@ -26,8 +26,8 @@ const options = [
 
 export default function Salary() {
 
-    const {setJobsFilter} = useContext(GlobalContext);
-    const {jobs} = useContext(GlobalContext);
+    const {setJobsFilter} = useContext(globalContext);
+    const {jobs} = useContext(globalContext);
 
     const handleSelectChange = ( event ) => {
         switch(event.value){

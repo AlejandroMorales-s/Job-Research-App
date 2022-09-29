@@ -1,12 +1,11 @@
 import React, {useContext} from 'react'
-import { GlobalContext } from '../../../App'
 import companyImgDefault from '../../../assets/company.svg'
 import {Link} from 'react-router-dom';
+import { globalContext } from '../../../context/GlobalContext';
 
 export default function FavsCard() {
 
-    const {favorites} = useContext(GlobalContext);
-
+    const {favorites} = useContext(globalContext);
 
     return (
         <>

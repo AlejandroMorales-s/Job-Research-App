@@ -1,13 +1,13 @@
 import React, {useContext} from 'react'
-import { GlobalContext } from '../../../App'
 import Navbar from '../../Navbar'
 import DocumentTitle from 'react-document-title';
 import JobCard from '../feed/JobCard';
 import Empty from './Empty';
+import { globalContext } from '../../../context/GlobalContext';
 
 export default function Favorites() {
     
-    const {favorites} = useContext(GlobalContext);
+    const {favorites} = useContext(globalContext);
 
     return (
         <>

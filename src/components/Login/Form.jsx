@@ -1,12 +1,12 @@
 import { signInWithEmailAndPassword } from 'firebase/auth';
 import React, {useRef, useContext} from 'react';
 import { auth, database } from '../../libs/firebase';
-import { GlobalContext } from '../../App';
 import { useNavigate } from 'react-router-dom';
 import { doc, getDoc } from 'firebase/firestore';
+import { globalContext } from '../../context/GlobalContext';
 
 export default function Form() {
-    const {setUser} = useContext(GlobalContext)
+    const {setUser} = useContext(globalContext)
 
     const navigate = useNavigate();
 

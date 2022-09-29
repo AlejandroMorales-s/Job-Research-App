@@ -1,12 +1,12 @@
 import React, {useRef, useContext} from 'react'
 import { postWithToken } from '../../../api';
-import { GlobalContext } from '../../../App';
 import Navbar from '../../Navbar';
 import DocumentTitle from 'react-document-title';
+import { globalContext } from '../../../context/GlobalContext';
 
 export default function CreateOffer() {
 
-  const {auth} = useContext(GlobalContext);
+  const {auth} = useContext(globalContext);
 
   const title = useRef();
   const category = useRef();

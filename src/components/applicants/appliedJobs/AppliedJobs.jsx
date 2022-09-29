@@ -1,12 +1,12 @@
 import React, {useContext, useEffect} from 'react'
 import Navbar from '../../Navbar'
-import { GlobalContext } from '../../../App'
 import JobCard from '../feed/JobCard';
 import Empty from '../favorites/Empty';
 import { postWithToken } from '../../../api';
+import { globalContext } from '../../../context/GlobalContext';
 
 export default function AppliedJobs() {
-    const {applied, setApplied} = useContext(GlobalContext);
+    const {applied, setApplied} = useContext(globalContext);
 
     useEffect(()=>{
     postWithToken('/api/jobs/me')

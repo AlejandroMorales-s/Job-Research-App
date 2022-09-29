@@ -4,7 +4,7 @@ export const authContext = createContext()
 
 export default function AuthProvider({children}) {
 
-    const [auth,setAuth] = useState({
+    const [user,setUser] = useState({
         id:"",
         name:"",
         logged:false
@@ -12,7 +12,7 @@ export default function AuthProvider({children}) {
 
   return (
     <authContext.Provider value={{
-        auth,setAuth
+        user,setUser
     }}>
         {children}
     </authContext.Provider>
