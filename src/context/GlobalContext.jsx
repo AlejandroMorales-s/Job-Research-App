@@ -2,7 +2,7 @@ import { useState, createContext } from 'react'
 
 export const globalContext = createContext()
 
-export default function GlobalContext() {
+export default function GlobalContext({children}) {
     const [jobsFilter, setJobsFilter] = useState([])
     const [jobs, setJobs] = useState([])
     const [favorites, setFavorites] = useState([])
@@ -33,7 +33,7 @@ export default function GlobalContext() {
             user,
             setUser,
         }}>
-
+            {children}
         </globalContext.Provider>
     )
 }
