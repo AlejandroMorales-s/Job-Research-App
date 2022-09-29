@@ -64,7 +64,7 @@ useEffect(()=>{
 const [favorites, setFavorites] = useState([])
 const [applied, setApplied] = useState([])
 const [user,setUser] = useState({
-  id:"",
+    id:"",
     name:"",
     email:"",
     role:"",

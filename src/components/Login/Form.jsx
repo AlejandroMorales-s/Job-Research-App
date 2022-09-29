@@ -1,8 +1,9 @@
 import { signInWithEmailAndPassword } from 'firebase/auth';
 import React, {useRef, useContext} from 'react';
-import { auth } from '../../libs/firebase';
+import { auth, database } from '../../libs/firebase';
 import { GlobalContext } from '../../App';
 import { useNavigate } from 'react-router-dom';
+import { doc, getDoc } from 'firebase/firestore';
 
 export default function Form() {
     const {setUser} = useContext(GlobalContext)
@@ -16,12 +17,18 @@ export default function Form() {
         event.preventDefault();
         signInWithEmailAndPassword(auth, email.current.value, password.current.value)
         .then(res => {
-            const {displayName, email} = res
-            console.log(res) 
-            setUser({
-                name: displayName,
-                email: email,
-                logged: true
+            const {displayName, email, uid} = res.user
+            const docRef = doc(database, "users", uid)
+            getDoc(docRef)
+            .then(data => {
+                const {role} = data.data()
+                setUser({
+                    id: uid,
+                    name: displayName,
+                    email: email,
+                    role: role,
+                    logged: true
+                })
             })
             navigate('/feed')
         })
