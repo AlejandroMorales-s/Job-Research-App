@@ -34,7 +34,7 @@ function App() {
         if(data.failed){
             console.log(data)
         }else{
-            setAuth({
+            setUser({
                 id:data.user.id,
                 name:data.user.name,
                 email:data.user.email,
@@ -63,7 +63,7 @@ useEffect(()=>{
 
 const [favorites, setFavorites] = useState([])
 const [applied, setApplied] = useState([])
-const [auth,setAuth] = useState({
+const [user,setUser] = useState({
   id:"",
     name:"",
     email:"",
@@ -86,8 +86,8 @@ const [auth,setAuth] = useState({
       setApplied,
       jobsFilter,
       setJobsFilter,
-      auth,
-      setAuth,
+      user,
+      setUser,
     }}>
       <Router>
         <Routes>

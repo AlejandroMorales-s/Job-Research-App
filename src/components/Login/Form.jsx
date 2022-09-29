@@ -1,10 +1,11 @@
+import { signInWithEmailAndPassword } from 'firebase/auth';
 import React, {useRef, useContext} from 'react';
-import {Link, useNavigate} from 'react-router-dom';
-import { post } from '../../api';
+import { auth } from '../../libs/firebase';
 import { GlobalContext } from '../../App';
+import { useNavigate } from 'react-router-dom';
 
 export default function Form() {
-    const {auth, setAuth} = useContext(GlobalContext)
+    const {setUser} = useContext(GlobalContext)
 
     const navigate = useNavigate();
 
@@ -13,32 +14,17 @@ export default function Form() {
 
     const login = (event) =>{
         event.preventDefault();
-
-        post("/api/auth/login",{ // Peticion de login
-            email: email.current.value,
-            password:password.current.value
-        })
-        .then(data=>{
-            const {token,user} = data.data
-            localStorage.setItem("token",token); // Guardamos el token que recibimos
-            setAuth({
-                id:user.id,
-                name:user.name,
-                email:user.email,
-                role:user.role,
-                logged:true
+        signInWithEmailAndPassword(auth, email.current.value, password.current.value)
+        .then(res => {
+            const {displayName, email} = res
+            console.log(res) 
+            setUser({
+                name: displayName,
+                email: email,
+                logged: true
             })
-            if (data.user.role === "applicant") {
-                navigate("/feed",{
-                    replace:true
-                })
-            } else {
-                navigate("/employerfeed",{
-                    replace:true
-                })
-            }
+            navigate('/feed')
         })
-
     }
 
     return (
