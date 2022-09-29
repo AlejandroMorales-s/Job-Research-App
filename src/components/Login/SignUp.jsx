@@ -1,13 +1,16 @@
 import React, {useEffect, useRef, useState} from 'react'
-import { post } from '../../api'
+import {
+    createUserWithEmailAndPassword,
+    updateProfile
+} from "firebase/auth"
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
 import { faCheck, faX } from '@fortawesome/free-solid-svg-icons'
+import { auth, database } from '../../libs/firebase';
+import { doc, setDoc } from 'firebase/firestore';
+import { useNavigate } from 'react-router-dom';
 
 export default function SignUp() {
-    const [error,setError] = useState({
-        isError:false,
-        message:"",
-    });
+    const navigate = useNavigate()
     const [valid, setValid] = useState(false);
     const email = useRef();
     const password = useRef();
@@ -16,23 +19,18 @@ export default function SignUp() {
 
     const signup = (event) =>{
         event.preventDefault()
-        
-        post("/api/auth/signup",{
-            name:name.current.value,
-            email: email.current.value,
-            password:password.current.value,
-            role:role.current.value
-        })
-        .then(({data})=>{
-            alert("User created successfully")
-        })
-        .catch(error=>{
-            setError({
-                isError:true,
-                message:error.response.data.message,
+        console.log(email, password) 
+        createUserWithEmailAndPassword(auth, email.current.value, password.current.value)
+        .then(async (res) => {
+            await updateProfile(res.user, {
+                displayName:name.current.value
             })
-            alert(error.response.data.message)
+            await setDoc(doc(database, "users", res.user.uid), {
+                role:role.current.value
+            })
+            navigate('/feed')
         })
+        .catch(error => console.log(error))
     }
 
     const regex = /^(?=\w*\d)(?=\w*[A-Z])(?=\w*[a-z])\S{8,16}$/
